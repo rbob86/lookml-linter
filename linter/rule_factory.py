@@ -1,4 +1,4 @@
-from rules import *
+from linter.rules import *
 
 
 class RuleFactory:
