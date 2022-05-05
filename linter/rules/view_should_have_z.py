@@ -1,4 +1,4 @@
-from rules.rule import Rule
+from linter.rules.rule import Rule
 
 
 class ViewShouldHaveZ(Rule):

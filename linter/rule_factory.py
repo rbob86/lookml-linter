@@ -1,4 +1,6 @@
-from rules import *
+from linter.rules.rule import Rule
+from linter.rules.view_should_have_z import ViewShouldHaveZ
+from linter.rules.field_should_have_description import FieldShouldHaveDescription
 
 
 class RuleFactory:

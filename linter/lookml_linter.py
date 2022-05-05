@@ -1,7 +1,8 @@
 
-from ruleset import Ruleset
-from rule_factory import RuleFactory
 from typing import Dict, List
+
+from linter.ruleset import Ruleset
+from linter.rule_factory import RuleFactory
 
 
 class LookMlLinter:
@@ -11,19 +12,22 @@ class LookMlLinter:
         self.data = data
 
     def run(self) -> None:
-        views = self.data['views']
+        views = self.data.get('views', [])
+        explores = self.data.get('explores', [])
 
         for v in views:
             self.__lint_object(v, 'view')
-
-            for e in v['explores']:
-                self.__lint_object(e, 'explore')
-            for d in v['dimensions']:
+            dimensions, measures, dimension_groups = [
+                v.get(key, []) for key in ['dimensions', 'measures', 'dimension_groups']]
+            for d in dimensions:
                 self.__lint_object(d, 'dimension')
-            for g in v['dimension_groups']:
+            for g in dimension_groups:
                 self.__lint_object(g, 'dimension_group')
-            for m in v['measures']:
+            for m in measures:
                 self.__lint_object(m, 'measure')
+
+        for e in explores:
+            self.__lint_object(e, 'explore')
 
     def __init_rules(self, rules: List) -> None:
         self.rules = {}
