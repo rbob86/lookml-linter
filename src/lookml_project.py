@@ -1,38 +1,38 @@
 import os
 import lkml
+import glob
 
 
 class LookMlProject:
 
-    def __init__(self, infilepaths):
+    root_file_path = "./**/*lkml"
+
+    def __init__(self):
         '''parse a list of LookML filepaths and then read into dictionary object
         Args:
             infilepath (list): list of input LookML file paths
         Returns:
             
         '''
-        self.infilepaths = infilepaths
+        
+        self.lkml_filepaths = [f for f in glob.glob(LookMlProject.root_file_path, recursive=True)]
         self.unparsable_lookML_file = []
         self.lookml_project = {}
-        for infilepath in self.infilepaths:
+        
+        for filepath in self.lkml_filepaths:
 
-            if not os.path.exists(infilepath):
-                raise IOError("Filename does not exist: %s" % infilepath)
-            
-            self.base_filename = os.path.basename(infilepath)
+            if not os.path.exists(filepath):
+                raise IOError("Filename does not exist: %s" % filepath)
 
-            with open(infilepath, 'r') as file:
+            with open(filepath, 'r') as file:
                 try:
-                    self.lookml_project[infilepath] = lkml.load(file)
+                    self.lookml_project[filepath] = lkml.load(file)
                 except SyntaxError:
-                    self.unparsable_lookML_file.append(file)
+                    self.unparsable_lookML_file.append(filepath)
 
         def unparsable_lkml_file(self):
-<<<<<<< HEAD
             """get unparsable lkml files (if any)
-=======
-            """get unparsable lkml file (if any)
->>>>>>> 6e2bb905fd86cce8d3be9be4aac5c5cfb9956a72
+
             Returns:
             unparsable_lkml_file (list) if any, None otherwise
             """
@@ -47,8 +47,4 @@ class LookMlProject:
             """
             if len(self.lookml_project) > 0:
                 return self.lookml_project
-<<<<<<< HEAD
             return None
-=======
-            return None
->>>>>>> 6e2bb905fd86cce8d3be9be4aac5c5cfb9956a72
