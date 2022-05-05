@@ -23,7 +23,7 @@ class LookMlProject:
 
             with open(infilepath, 'r') as file:
                 try:
-                    self.lookml_project[self.base_filename] = lkml.load(file)
+                    self.lookml_project[infilepath] = lkml.load(file)
                 except SyntaxError:
                     self.unparsable_lookML_file.append(file)
 
