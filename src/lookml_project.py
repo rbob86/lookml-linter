@@ -28,7 +28,11 @@ class LookMlProject:
                     self.unparsable_lookML_file.append(file)
 
         def unparsable_lkml_file(self):
+<<<<<<< HEAD
             """get unparsable lkml files (if any)
+=======
+            """get unparsable lkml file (if any)
+>>>>>>> 6e2bb905fd86cce8d3be9be4aac5c5cfb9956a72
             Returns:
             unparsable_lkml_file (list) if any, None otherwise
             """
@@ -43,4 +47,8 @@ class LookMlProject:
             """
             if len(self.lookml_project) > 0:
                 return self.lookml_project
+<<<<<<< HEAD
             return None
+=======
+            return None
+>>>>>>> 6e2bb905fd86cce8d3be9be4aac5c5cfb9956a72
