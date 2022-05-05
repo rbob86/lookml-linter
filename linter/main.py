@@ -1,7 +1,8 @@
 import os
 import sys
 import yaml
-from lookml_linter import LookMlLinter
+
+from linter.lookml_linter import LookMlLinter
 
 
 data = {

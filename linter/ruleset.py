@@ -1,5 +1,6 @@
-from jsonschema import validate as validate_json_schema
 from enum import Enum
+
+from jsonschema import validate as validate_json_schema
 
 
 class Severity(Enum):
@@ -18,33 +19,33 @@ class Ruleset:
         {
             "name": "field_should_have_description",
             "object_type": ("dimension", "measure"),
-            "severity": Severity.ERROR
+            "severity": Severity.ERROR.value
         },
-        {
-            "name": "dimension_should_have_x",
-            "object_type": "dimension",
-            "severity": Severity.ERROR
-        },
-        {
-            "name": "measure_should_have_y",
-            "object_type": "measure",
-            "severity": Severity.ERROR
-        },
+        # {
+        #     "name": "dimension_should_have_x",
+        #     "object_type": "dimension",
+        #     "severity": Severity.ERROR.value
+        # },
+        # {
+        #     "name": "measure_should_have_y",
+        #     "object_type": "measure",
+        #     "severity": Severity.ERROR.value
+        # },
         {
             "name": "view_should_have_z",
             "object_type": "view",
-            "severity": Severity.ERROR
+            "severity": Severity.ERROR.value
         },
-        {
-            "name": "view_requires_abc",
-            "object_type": "view",
-            "severity": Severity.WARNING
-        },
-        {
-            "name": "view_requires_xyz",
-            "object_type": "view",
-            "severity": Severity.ERROR
-        },
+        # {
+        #     "name": "view_requires_abc",
+        #     "object_type": "view",
+        #     "severity": Severity.WARNING.value
+        # },
+        # {
+        #     "name": "view_requires_xyz",
+        #     "object_type": "view",
+        #     "severity": Severity.ERROR.value
+        # },
     )
 
     override_schema = {

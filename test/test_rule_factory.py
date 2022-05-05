@@ -11,7 +11,7 @@ rule_names = (
 )
 
 
-def test_rule_factory_throws_key_error_if_rule_class_does_not_exist() -> None:
+def test_build_method_throws_key_error_if_rule_class_does_not_exist() -> None:
     factory = RuleFactory()
     for rule_name in rule_names:
         rule_name = rule_name + '--invalid'
@@ -19,7 +19,7 @@ def test_rule_factory_throws_key_error_if_rule_class_does_not_exist() -> None:
             factory.build(rule_name)
 
 
-def test_rule_factory_builds_appropriate_rule() -> None:
+def test_build_method_returns_appropriate_rule() -> None:
     factory = RuleFactory()
     for rule_name in rule_names:
         rule = factory.build(rule_name)

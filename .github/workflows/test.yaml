@@ -9,7 +9,6 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
 
-      # Setup Python (faster than using Python container)
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
