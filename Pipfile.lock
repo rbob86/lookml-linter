@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "0635a981a95d1e148cc586329baead2802f8a07f21e1dc86b5813ffccac2b1f2"
+            "sha256": "c6c502d9e6e7505489051cba3a9e2d93c735a416eba701f33875597fa96c97c1"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -21,7 +21,7 @@
                 "sha256:2d27e3784d7a565d36ab851fe94887c5eccd6a463168875832a1be79c82828b4",
                 "sha256:626ba8234211db98e869df76230a137c4c40a12d72445c45d5f5b716f076e2fd"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4'",
+            "markers": "python_version >= '3.7'",
             "version": "==21.4.0"
         },
         "cattrs": {
@@ -80,11 +80,19 @@
         },
         "jsonschema": {
             "hashes": [
-                "sha256:636694eb41b3535ed608fe04129f26542b59ed99808b4f688aa32dcf55317a83",
-                "sha256:77281a1f71684953ee8b3d488371b162419767973789272434bbc3f29d9c8823"
+                "sha256:19462141d4efb2d8046cd4a7076126c5bdb1dd04f6fb9129b46b4b8f7b0de355",
+                "sha256:71440faf604ccc4958f0a54fad16fa24e4977256f9666a21e8ad59a5447bd0b0"
             ],
             "index": "pypi",
-            "version": "==4.4.0"
+            "version": "==4.5.0"
+        },
+        "lkml": {
+            "hashes": [
+                "sha256:20b126e5a4ecef2217f9c21ff47e5354f672d76995038b039984ae5deb3e95ca",
+                "sha256:ba31ca4749a0f749604331ff5fc29c586c9d9240251dd3232e46e283edde1d33"
+            ],
+            "index": "pypi",
+            "version": "==1.2.0"
         },
         "looker-sdk": {
             "hashes": [
