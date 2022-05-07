@@ -1,7 +1,22 @@
 import pytest
-from linter.lookml_file_parser import LookMlFilesParser
+from linter.lookml_file_parser import LookMlProjectParser
 
-def  test_lookml_project_method_returns_test_lookml_files_dict() -> None:
-    LookMlFilesParser.root_file_path = "./test/test_lookml_files/"
-    parsed_lookml_files = LookMlFilesParser()
-    assert len(parsed_lookml_files.get_lookml_project()) == 3
+
+def test_get_parsed_lookml_files_method_returns_test_dict_parsed_files() -> None:
+    LookMlProjectParser.root_file_path = "./test/test_lookml_files/"
+    parser = LookMlProjectParser()
+
+    assert len(parser.get_parsed_lookml_files()) == 3
+
+
+def test_get_unparsable_lookml_files_method_returns_test_list_unparsed_files() -> None:
+    LookMlProjectParser.root_file_path = "./test/test_lookml_files/"
+    parser = LookMlProjectParser()
+
+    assert len(parser.get_unparsable_lkml_files()) == 1
+
+
+def test_lookmlprojectparser_raises_error_if_root_dir_does_not_exist() -> None:
+    LookMlProjectParser.root_file_path = "./test/fake_dir/"
+    with pytest.raises(IOError):
+        LookMlProjectParser()

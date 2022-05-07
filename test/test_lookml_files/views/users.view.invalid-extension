@@ -1,9 +1,9 @@
-view: users {
+view users {
   sql_table_name: `lookerplus.the_look.users`
     ;;
   drill_fields: [id]
 
-  dimension: id {
+  dimension: id
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
@@ -35,7 +35,7 @@ view: users {
       month,
       quarter,
       year
-    ]
+  
     sql: ${TABLE}.created_at ;;
   }
 
@@ -88,4 +88,4 @@ view: users {
     type: count
     drill_fields: [id, last_name, first_name, events.count, order_items.count]
   }
-}
+
