@@ -8,6 +8,7 @@ looker-sdk = "*"
 pyyaml = "*"
 jsonschema = "*"
 pytest = "*"
+lkml = "*"
 
 [dev-packages]
 
