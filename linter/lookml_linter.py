@@ -1,15 +1,12 @@
 
 from typing import Dict, List
-
-from linter.ruleset import Ruleset
-from linter.rule_factory import RuleFactory
+from linter.rule import Rule
 
 
 class LookMlLinter:
-    def __init__(self, data: Dict, config: List):
-        Ruleset.apply_severity_overrides(config)
-        self.__init_rules(Ruleset.rules_to_apply())
+    def __init__(self, data: Dict, rules: List[Rule]):
         self.data = data
+        self.rules = rules
 
     def run(self) -> None:
         views = self.data.get('views', [])
@@ -28,16 +25,6 @@ class LookMlLinter:
 
         for e in explores:
             self.__lint_object(e, 'explore')
-
-    def __init_rules(self, rules: List) -> None:
-        self.rules = {}
-        factory = RuleFactory()
-        for rule in rules:
-            instance_of_rule = factory.build(rule['name'])
-            object_types = rule['object_type'] if type(
-                rule['object_type']) is tuple else (rule['object_type'],)
-            for object_type in object_types:
-                self.rules.setdefault(object_type, []).append(instance_of_rule)
 
     def __lint_object(self, object: Dict, object_type: str) -> None:
         for rule in self.rules[object_type]:

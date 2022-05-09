@@ -1,7 +1,14 @@
-from linter.rules.rule import Rule
+from linter.rule import Rule
+from linter.severity import Severity
 
 
 class FieldShouldHaveDescription(Rule):
+    def default_severity():
+        return Severity.ERROR.value
+
+    def applies_to():
+        return ('dimension', 'measure')
+
     def run(self, field):
         if not 'description' in field:
             return False

@@ -1,0 +1,4 @@
+- rule: field_should_have_description
+  severity: warning
+- rule: view_should_have_z
+  severity: ignore

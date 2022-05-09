@@ -1,8 +1,7 @@
-import os
 import sys
-import yaml
 
 from linter.lookml_linter import LookMlLinter
+from linter.rule_config_parser import RuleConfigParser
 
 
 data = {
@@ -43,17 +42,11 @@ data = {
 
 def main():
     args = sys.argv[1:]
-    config = []
 
     if len(args) > 0:
         config_file = args[0]
-        if os.path.exists(config_file):
-            with open(config_file, 'r') as f:
-                config = yaml.safe_load(f)
-        else:
-            raise Exception(f'Config file at {config_file} not found')
-
-    LookMlLinter(data, config).run()
+        rules = RuleConfigParser(config_file).parse()
+        LookMlLinter(data, rules).run()
 
 
 main()
