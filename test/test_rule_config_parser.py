@@ -1,7 +1,7 @@
-# import pytest
-from linter.ruleset import Ruleset, Severity
-from linter.rules.view_should_have_z import ViewShouldHaveZ
-from linter.rules.field_should_have_description import FieldShouldHaveDescription
+# # import pytest
+# from linter.ruleset import Ruleset, Severity
+# from linter.rules.view_should_have_z import ViewShouldHaveZ
+# from linter.rules.field_should_have_description import FieldShouldHaveDescription
 
 
 # def test_rules_property_names_correspond_to_existing_classes() -> None:

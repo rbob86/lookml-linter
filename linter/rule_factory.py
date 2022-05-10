@@ -9,7 +9,7 @@ class RuleFactory:
     def __init__(self) -> None:
         pass
 
-    def build(self, rule_name: str, severity: Union[Severity, None]) -> Rule:
+    def build(self, rule_name: str, severity: Union[Severity, None] = None) -> Rule:
         classname = self.__rule_name_to_classname(rule_name)
         rule_class = globals()[classname]
         if severity is None:

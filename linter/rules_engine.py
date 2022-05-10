@@ -10,7 +10,6 @@ class RulesEngine:
         config_by_rule_name = {c['rule']: c for c in config}
         for rule_name in RuleNames.get():
             # Apply config overrides
-            severity = None
             if rule_name in config_by_rule_name:
                 severity = config_by_rule_name[rule_name]['severity']
             # Instantiate rule
