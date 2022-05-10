@@ -1,14 +1,15 @@
+from typing import Union
 from linter.rule import Rule
-from linter.rules.view_should_have_z import ViewShouldHaveZ
 from linter.rules.field_should_have_description import FieldShouldHaveDescription
+from linter.rules.view_should_have_z import ViewShouldHaveZ
 from linter.severity import Severity
 
 
 class RuleFactory:
-    def __init__(self):
+    def __init__(self) -> None:
         pass
 
-    def build(self, rule_name: str, severity: Severity) -> Rule:
+    def build(self, rule_name: str, severity: Union[Severity, None]) -> Rule:
         classname = self.__rule_name_to_classname(rule_name)
         rule_class = globals()[classname]
         if severity is None:

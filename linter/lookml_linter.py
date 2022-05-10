@@ -4,7 +4,7 @@ from linter.rule import Rule
 
 
 class LookMlLinter:
-    def __init__(self, data: Dict, rules: List[Rule]):
+    def __init__(self, data: Dict, rules: Dict[str, List[Rule]]) -> None:
         self.data = data
         self.rules = rules
 

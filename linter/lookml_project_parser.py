@@ -1,14 +1,13 @@
 import os
 import lkml
 import glob
-import pathlib
 
 
 class LookMlProjectParser:
 
     root_file_path = "./"
 
-    def __init__(self):
+    def __init__(self) -> None:
         '''parse a list of LookML filepaths and then read into dictionary object
         Args:
             infilepath (list): list of input LookML file paths

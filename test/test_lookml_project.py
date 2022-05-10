@@ -1,5 +1,5 @@
 import pytest
-from linter.lookml_file_parser import LookMlProjectParser
+from linter.lookml_project_parser import LookMlProjectParser
 
 
 def test_get_parsed_lookml_files_method_returns_test_dict_parsed_files() -> None:

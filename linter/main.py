@@ -1,7 +1,7 @@
 import sys
-
+from linter.config_validator import ConfigValidator
 from linter.lookml_linter import LookMlLinter
-from linter.rule_config_parser import RuleConfigParser
+from linter.rules_engine import RulesEngine
 
 
 data = {
@@ -43,10 +43,15 @@ data = {
 def main():
     args = sys.argv[1:]
 
+    config_file = None
     if len(args) > 0:
         config_file = args[0]
-        rules = RuleConfigParser(config_file).parse()
-        LookMlLinter(data, rules).run()
+
+    validator = ConfigValidator(config_file)
+    validator.validate()
+    config = validator.config
+    rules = RulesEngine(config).rules
+    LookMlLinter(data, rules).run()
 
 
 main()
