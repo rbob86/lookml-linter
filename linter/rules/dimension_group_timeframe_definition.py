@@ -9,7 +9,7 @@ class DimensionGroupTimeframeDefinition(Rule):
     def applies_to():
         return ('dimension_group')
 
-    def run(self, field):
-        if not 'timeframe' in field:
+    def run(self, dimension_group):
+        if not 'timeframe' in dimension_group:
             return False
         return True

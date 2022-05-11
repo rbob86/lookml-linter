@@ -9,7 +9,7 @@ class ExploreDescriptionDefinition(Rule):
     def applies_to():
         return ('explore')
 
-    def run(self, field):
-        if not 'description' in field:
+    def run(self, explore):
+        if not 'description' in explore:
             return False
         return True

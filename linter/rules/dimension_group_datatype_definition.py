@@ -9,5 +9,7 @@ class DimensionGroupDataTypeDefinition(Rule):
     def applies_to():
         return ('dimension_group')
 
-    def run(self, field):
-        return
+    def run(self, dimension_group):
+        if not 'datatype' in dimension_group:
+            return False
+        return True
