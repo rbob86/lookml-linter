@@ -2,7 +2,7 @@ from linter.severity import Severity
 from linter.rule import Rule
 
 
-class ViewShouldHaveZ(Rule):
+class ViewHiddenByDefault(Rule):
     def default_severity():
         return Severity.ERROR.value
 
@@ -12,7 +12,7 @@ class ViewShouldHaveZ(Rule):
 
     # hidden by default should be toggled on
     # if there are over 50 fields in the view
-    def ViewHiddenByDefault(self, view):
+    def run(self, view):
         dimensions, measures, dimension_groups = [
         view.get(key, []) for key in ['dimensions', 'measures', 'dimension_groups']]
 
