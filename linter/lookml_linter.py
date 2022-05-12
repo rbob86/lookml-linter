@@ -32,4 +32,5 @@ class LookMlLinter:
     def __lint_object(self, object: Dict, object_type: str) -> None:
         if object_type in self.rules:
             for rule in self.rules[object_type]:
-                rule.run(object)
+                if rule.severity != Severity.IGNORE.value:
+                    rule.run(object)
