@@ -1,8 +1,8 @@
 import os
 import yaml
 from jsonschema import validate as validate_json_schema
+from linter.rules_engine import RulesEngine
 from linter.severity import Severity
-from linter.rule_names import RuleNames
 
 
 class ConfigValidator:
@@ -20,7 +20,7 @@ class ConfigValidator:
                 'properties': {
                     'rule': {
                         'type': 'string',
-                        'enum': [name for name in RuleNames.get()]
+                        'enum': [name for name in RulesEngine.rule_names()]
                     },
                     'severity': {
                         'type': 'string',
