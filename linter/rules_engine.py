@@ -28,4 +28,4 @@ class RulesEngine:
     def rule_names() -> List[str]:
         dir = RulesEngine.rules_dir
         return [Path(f).stem for f in listdir(
-                dir) if path.isfile(path.join(dir, f)) and f != '__init__.py']
+                dir) if path.isfile(path.join(dir, f))]
