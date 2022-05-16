@@ -2,7 +2,7 @@ from linter.severity import Severity
 from linter.rule import Rule
 
 
-class ViewHiddenByDefault(Rule):
+class ViewWithManyFieldsRequiresFieldsHiddenByDefault(Rule):
     def default_severity():
         return Severity.ERROR.value
 

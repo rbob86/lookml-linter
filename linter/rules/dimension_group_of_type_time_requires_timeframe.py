@@ -2,7 +2,7 @@ from linter.rule import Rule
 from linter.severity import Severity
 
 
-class DimensionGroupTimeframeDefinition(Rule):
+class DimensionGroupOfTypeTimeRequiresTimeframe(Rule):
     def default_severity():
         return Severity.WARNING.value
 

@@ -2,7 +2,7 @@ from linter.rule import Rule
 from linter.severity import Severity
 
 
-class DimensionGroupDataTypeDefinition(Rule):
+class DimensionGroupRequiresDataType(Rule):
     def default_severity():
         return Severity.WARNING.value
 
