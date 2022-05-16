@@ -7,7 +7,7 @@ class ExploreDescriptionDefinition(Rule):
         return Severity.ERROR.value
 
     def applies_to():
-        return ('explore')
+        return ('explore',)
 
     def run(self, explore):
         if not 'description' in explore:
