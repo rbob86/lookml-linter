@@ -1,4 +1,10 @@
-- rule: field_should_have_description
+- rule: field_requires_description
   severity: warning
-- rule: view_should_have_z
+- rule: view_with_many_fields_requires_fields_hidden_by_default
+  severity: ignore
+- rule: dimension_group_of_type_time_requires_datatype
+  severity: error
+- rule: dimension_group_of_type_time_requires_timeframe
+  severity: warning
+- rule: explore_requires_description
   severity: ignore

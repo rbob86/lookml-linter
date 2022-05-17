@@ -2,7 +2,7 @@ from linter.rule import Rule
 from linter.severity import Severity
 
 
-class DimensionGroupRequiresDataType(Rule):
+class DimensionGroupOfTypeTimeRequiresDatatype(Rule):
     def default_severity():
         return Severity.WARNING.value
 
@@ -10,6 +10,7 @@ class DimensionGroupRequiresDataType(Rule):
         return ('dimension_group',)
 
     def run(self, dimension_group):
-        if not 'datatype' in dimension_group:
+        type = dimension_group.get('type')
+        if type == 'time' and not 'datatype' in dimension_group:
             return False
         return True

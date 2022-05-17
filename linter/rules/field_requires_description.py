@@ -2,7 +2,7 @@ from linter.rule import Rule
 from linter.severity import Severity
 
 
-class FieldsRequireDescription(Rule):
+class FieldRequiresDescription(Rule):
     def default_severity():
         return Severity.ERROR.value
 
