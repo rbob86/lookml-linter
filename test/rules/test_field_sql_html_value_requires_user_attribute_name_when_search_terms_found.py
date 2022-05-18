@@ -34,7 +34,7 @@ def test_run_method_fails_field_with_search_term_hits_and_no_html_paramater() ->
     assert rule_result == False
 
 
-def test_run_method_fails_field_with_no_search_term_hits_and_no_user_atrributes_permissions() -> None:
+def test_run_method_fails_field_with_no_search_term_hits() -> None:
     rule = FieldSqlHtmlValueRequiresUserAttributeNameWhenSearchTermsFound()
 
     field = {'primary_key': 'yes', 'type': 'number', 'sql': 'CASE WHEN {{ _user_attributes[""permissions_financial_row_level""] }} = 1 THEN\n            ${TABLE}.id\n        ELSE\n            -1\n        END',
