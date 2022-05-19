@@ -1,15 +1,13 @@
 
 from typing import Dict, List
-from linter.rule import Rule
-from linter.severity import Severity
+from linter.rule import Rule, Severity
 
 
 class LookMlLinter:
     def __init__(self, data: Dict, rules: Dict[str, List[Rule]]) -> None:
         self.data = data
         self.rules = rules
-        
-    # to do: add check on views if they are derived tables. 
+
     def run(self) -> None:
         for file in self.data:
             file_data = self.data[file]

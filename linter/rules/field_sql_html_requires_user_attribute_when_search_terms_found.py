@@ -1,15 +1,13 @@
 from linter.rule import Rule
-from linter.severity import Severity
 
 
-class FieldSqlHtmlValueRequiresUserAttributeNameWhenSearchTermsFound(Rule):
-    def default_severity():
-        return Severity.ERROR.value
-
+class FieldSqlHtmlRequiresUserAttributeWhenSearchTermsFound(Rule):
     def applies_to():
         return ('dimension', 'measure', 'dimension_group')
 
-    def run(self, field, user_attribute, search_terms):
+    def run(self, field):
+        user_attribute = self.params['user_attribute']
+        search_terms = self.params['search_terms']
         search_pattern = ' '.join([field.get(key, '')
                                    for key in ['name', 'label', 'description']])
         user_attribute_search_term = f'_user_attributes[""{user_attribute}""]'

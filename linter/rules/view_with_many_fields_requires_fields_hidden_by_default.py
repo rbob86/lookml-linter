@@ -1,11 +1,7 @@
-from linter.severity import Severity
 from linter.rule import Rule
 
 
 class ViewWithManyFieldsRequiresFieldsHiddenByDefault(Rule):
-    def default_severity():
-        return Severity.ERROR.value
-
     def applies_to():
         return ('view',)
 
