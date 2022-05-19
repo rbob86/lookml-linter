@@ -27,7 +27,7 @@ def test_run_method_successfully_validates_view_file_with_more_than_50_fields() 
     assert rule_result == True
 
 
-def test_run_method_fails_view_file_with_more_than_50_fields() -> None:
+def test_run_method_fails_view_file_with_more_than_50_fields_if_fields_hidden_missing() -> None:
     rule = ViewWithManyFieldsRequiresFieldsHiddenByDefault()
 
     view = {'sql_table_name': 'public.products',
