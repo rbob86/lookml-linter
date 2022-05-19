@@ -2,7 +2,7 @@ import os
 import yaml
 from jsonschema import validate as validate_json_schema
 from linter.rules_engine import RulesEngine
-from linter.severity import Severity
+from linter.rule import ParamSet, Severity
 
 
 class ConfigValidator:
@@ -26,6 +26,23 @@ class ConfigValidator:
                         'type': 'string',
                         'enum': [severity.value for severity in Severity]
                     },
+                    'param_sets': {
+                        'type': 'array',
+
+                        # TODO: Runs extremely slowly, figure out solution
+                        # 'items': {
+                        #     'type': 'object',
+                        #     'properties': {
+                        #         'user_attribuste': {'type': 'number'},
+                        #         # 'search_terms': {
+                        #         #     'type': 'array',
+                        #         #     'items': {
+                        #         #         'type': 'string'
+                        #         #     }
+                        #         # },
+                        #     }
+                        # }
+                    }
                 },
                 'required': ['rule', 'severity']
             }
