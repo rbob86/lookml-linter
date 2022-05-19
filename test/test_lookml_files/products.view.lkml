@@ -1,20 +1,26 @@
 view: products {
-  sql_table_name: `lookerplus.the_look.products`
-    ;;
-  drill_fields: [id]
+  sql_table_name: public.products ;;
 
   dimension: id {
     primary_key: yes
     type: number
-    sql: ${TABLE}.id ;;
-  }
-
-  dimension: is_my_brand {
-    type: yesno
-    sql: ${brand} = "{{ _user_attributes['brand'] }}" ;;
-  }
+    sql:
+        CASE WHEN {{ _user_attributes[""permissions_financial_row_level""] }} = 1 THEN
+            ${TABLE}.id
+        ELSE
+            -1
+        END ;;
+    html:
+        {% if _user_attributes[""permissions_financial_row_level""] == 1 %}
+        {{ rendered_value }}
+        {% else %}
+        [Insufficient Permissions]
+        {% endif %} ;;
+    }
 
   dimension: brand {
+    label: "Brand"
+    description: "Branding lots"
     type: string
     sql: ${TABLE}.brand ;;
   }
@@ -35,7 +41,7 @@ view: products {
   }
 
   dimension: distribution_center_id {
-    type: string
+    type: number
     # hidden: yes
     sql: ${TABLE}.distribution_center_id ;;
   }
@@ -55,8 +61,22 @@ view: products {
     sql: ${TABLE}.sku ;;
   }
 
+  dimension: brand_cat{
+    type: string
+    sql: ${brand}||' ' || ${category} ;;
+
+  }
+
   measure: count {
     type: count
-    drill_fields: [id, name, distribution_centers.name, distribution_centers.id, inventory_items.count]
+    drill_fields: [id, name, distribution_centers.id, distribution_centers.name, inventory_items.count]
+  }
+
+  measure: total_cost {
+    type: sum
+    sql: ${cost} ;;
+    value_format_name: usd
+    drill_fields: [id, name, category, distribution_centers.name, department]
+
   }
 }
