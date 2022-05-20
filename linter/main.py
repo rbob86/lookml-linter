@@ -17,7 +17,9 @@ def main():
     config = validator.config
     rules = RulesEngine(config).rules
     data = LookMlProjectParser().get_parsed_lookml_files()
-    LookMlLinter(data, rules).run()
+    linter = LookMlLinter(data, rules)
+    linter.run()
+    linter.print_errors()
 
 
 main()

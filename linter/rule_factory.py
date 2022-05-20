@@ -1,4 +1,5 @@
-from typing import List, Union
+from typing import Union
+from linter.helpers import snake_case_to_pascal_case
 from linter.rule import ParamSet, Rule, Severity
 
 # TODO: AUTO-IMPORT RULES
@@ -15,8 +16,5 @@ class RuleFactory:
         pass
 
     def build(self, rule_name: str, severity: Severity, params: Union[ParamSet, None] = None) -> Rule:
-        classname = self.__rule_name_to_classname(rule_name)
+        classname = snake_case_to_pascal_case(rule_name)
         return globals()[classname](severity, params)
-
-    def __rule_name_to_classname(self, rule_name: str) -> str:
-        return rule_name.replace('_', ' ').title().replace(' ', '')

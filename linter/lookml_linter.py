@@ -1,18 +1,30 @@
 
-from typing import Dict, List
+from typing import Dict, List, TypedDict
+from linter.helpers import pascal_case_to_snake_case
 from linter.rule import Rule, Severity
 
 
+class RuleEngineType(TypedDict):
+    name: str
+    instance: Rule
+
+
 class LookMlLinter:
-    def __init__(self, data: Dict, rules: Dict[str, List[Rule]]) -> None:
+    def __init__(self, data: Dict, rules: Dict[str, List[RuleEngineType]]) -> None:
         self.data = data
         self.rules = rules
 
     def run(self) -> None:
-        for file in self.data:
-            file_data = self.data[file]
+        self._errors = []
+
+        for filename in self.data:
+            file_data = self.data[filename]
             views = file_data.get('views', [])
             explores = file_data.get('explores', [])
+            self._errors.append({
+                'filename': filename,
+                'messages': []
+            })
 
             for v in views:
                 self.__lint_object(v, 'view')
@@ -28,8 +40,21 @@ class LookMlLinter:
             for e in explores:
                 self.__lint_object(e, 'explore')
 
+    def print_errors(self) -> None:
+        for error in self._errors:
+            print(error['filename'])
+            if len(error['messages']) == 0:
+                print(f'    No linting warnings/errors found.')
+            for message in error['messages']:
+                print(f'    {message}')
+            print()
+
     def __lint_object(self, object: Dict, object_type: str) -> None:
         if object_type in self.rules:
             for rule in self.rules[object_type]:
-                if rule.severity != Severity.IGNORE.value:
-                    rule.run(object)
+                runner = rule['instance']
+                if runner.severity != Severity.IGNORE.value:
+                    success = runner.run(object)
+                    if not success:
+                        error_msg = f'{runner.severity}: {object_type} {object["name"]} - {rule["name"]}'
+                        self._errors[-1]['messages'].append(error_msg)
