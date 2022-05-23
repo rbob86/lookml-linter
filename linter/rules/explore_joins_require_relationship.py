@@ -6,7 +6,6 @@ class ExploreJoinsRequireRelationship(Rule):
         return ('explore',)
 
     def run(self, explore):
-
         joins = explore.get('joins', [])
         for join in joins:
             if not 'relationship' in join:

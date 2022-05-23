@@ -1,12 +1,9 @@
 from linter.rule import Rule
 
 
-class ViewWithDimensionsAndMeasuresHasOnePrimaryKeyDefined(Rule):
+class ViewWithDimensionsAndMeasuresHasOnePrimaryKey(Rule):
     def applies_to():
         return ('view',)
-
-    # hidden by default should be toggled on
-    # if there are over 50 fields in the view
 
     def run(self, view):
         dimensions, measures = [
@@ -15,7 +12,7 @@ class ViewWithDimensionsAndMeasuresHasOnePrimaryKeyDefined(Rule):
             primary_key_count = 0
             for dimension in dimensions:
                 if 'primary_key' in dimension:
-                    primary_key_count = + 1
+                    primary_key_count += 1
             if primary_key_count != 1:
                 return False
         return True
