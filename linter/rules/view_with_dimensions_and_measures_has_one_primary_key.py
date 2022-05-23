@@ -8,11 +8,12 @@ class ViewWithDimensionsAndMeasuresHasOnePrimaryKey(Rule):
     def run(self, view):
         dimensions, measures = [
             view.get(key, []) for key in ['dimensions', 'measures']]
+        has_primary_key = True
         if len(measures) > 0 and len(dimensions) > 0:
-            primary_key_count = 0
+            has_primary_key = False
             for dimension in dimensions:
                 if 'primary_key' in dimension:
-                    primary_key_count += 1
-            if primary_key_count != 1:
-                return False
-        return True
+                    if has_primary_key:
+                        return False
+                    has_primary_key = True
+        return has_primary_key
