@@ -1,3 +1,4 @@
+from linter.helpers import snake_case_to_pascal_case
 import pytest
 from linter.rule import Severity
 from linter.rule_factory import RuleFactory
@@ -17,7 +18,7 @@ def test_build_method_returns_appropriate_rule() -> None:
     for rule_name in RulesEngine.rule_names():
         rule = factory.build(rule_name, Severity.ERROR.value)
         rule_class_name = type(rule).__name__
-        class_name = factory._RuleFactory__rule_name_to_classname(rule_name)
+        class_name = snake_case_to_pascal_case(rule_name)
         assert rule_class_name == class_name
 
 

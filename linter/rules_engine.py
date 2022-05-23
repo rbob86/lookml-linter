@@ -20,10 +20,10 @@ class RulesEngine:
             if param_sets:
                 for params in param_sets:
                     rule = rule_factory.build(rule_name, severity, params)
-                    self.__add(rule)
+                    self.__add(rule, rule_name)
             else:
                 rule = rule_factory.build(rule_name, severity)
-                self.__add(rule)
+                self.__add(rule, rule_name)
 
     @staticmethod
     @functools.lru_cache
@@ -32,6 +32,9 @@ class RulesEngine:
         return [Path(f).stem for f in listdir(
                 dir) if path.isfile(path.join(dir, f))]
 
-    def __add(self, rule):
+    def __add(self, rule, rule_name: str) -> None:
         for object_type in rule.__class__.applies_to():
-            self.rules.setdefault(object_type, []).append(rule)
+            self.rules.setdefault(object_type, []).append({
+                'name': rule_name,
+                'instance': rule
+            })
