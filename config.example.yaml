@@ -2,10 +2,14 @@
   severity: warning
 - rule: view_with_many_fields_requires_fields_hidden_by_default
   severity: ignore
+- rule: view_with_dimensions_and_measures_has_one_primary_key_defined
+  severity: ignore
 - rule: dimension_group_of_type_time_requires_datatype
   severity: error
 - rule: dimension_group_of_type_time_requires_timeframe
   severity: warning
+- rule: explore_joins_require_relationship
+  severity: ignore
 - rule: explore_requires_description
   severity: ignore
 - rule: field_sql_html_requires_user_attribute_when_search_terms_found
