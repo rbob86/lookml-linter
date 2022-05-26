@@ -8,9 +8,9 @@ inputs:
     required: false
     default: new
   args:
-    description: Args to pass to the flake8 executable
+    description: None
     required: false
-    default: "."
+    default: 
 
 runs:
   using: docker
