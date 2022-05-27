@@ -9,9 +9,9 @@ LABEL "repository"="https://github.com/rbob86/lookml-linter/tree/main/linter/rul
 LABEL "homepage"="https://github.com/rbob86/lookml-linter"
 LABEL "maintainer"="Eric"
 
-RUN python -m pip install --upgrade pip
-RUN pip install looker-sdk
-RUN pip install pyyaml
-RUN pip install jsonschema 
-RUN pip install pytest
-RUN pip install lkml
+# RUN python -m pip install --upgrade pip
+# RUN pip install looker-sdk
+# RUN pip install pyyaml
+# RUN pip install jsonschema 
+# RUN pip install pytest
+# RUN pip install lkml
