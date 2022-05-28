@@ -11,7 +11,7 @@ LABEL "maintainer"="Eric"
 
 COPY . .
 
-RUN python -m pip install  --upgrade pip
+RUN python pip install  --upgrade pip
 RUN pip install looker-sdk
 RUN pip install pyyaml
 RUN pip install jsonschema 
@@ -21,4 +21,4 @@ RUN pip install lkml
 
 RUN ls -la
 
-ENTRYPOINT ["python", "-m" , "linter.main", "config.example.yaml"]
+ENTRYPOINT ["python", "./linter/main.py", "config.example.yaml"]
