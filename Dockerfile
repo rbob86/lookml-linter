@@ -22,13 +22,10 @@ RUN pip install pytest
 RUN pip install lkml
 
 
-RUN ls -la
-
+RUN ["ls -la"]
 
 # CMD [ "python", "-m" , "linter.main", "config.example.yaml"]
 
-
-
-RUN chmod +x ./entrypoint.sh
+RUN ["chmod", "+x", "/usr/src/app/entrypoint.sh"]
 
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
