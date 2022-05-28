@@ -11,6 +11,7 @@ LABEL "maintainer"="Eric"
 
 COPY . .
 
+RUN python3 -m pip3 install --upgrade pip3
 RUN pip3 install -r requirements.txt
 RUN pip3 install .
 
