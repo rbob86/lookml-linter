@@ -11,12 +11,7 @@ LABEL "maintainer"="Eric"
 
 COPY . .
 
-WORKDIR 
-
-COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
-
-# COPY . .
 
 # RUN python pip install  --upgrade pip
 # RUN pip install looker-sdk
