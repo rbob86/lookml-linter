@@ -16,6 +16,14 @@ RUN pip install jsonschema
 RUN pip install pytest
 RUN pip install lkml
 
+WORKDIR /
+
+COPY ./linter .
+COPY config.example.yaml .
+
+# CMD [ "python", "-m" , "linter.main", "config.example.yaml"]
+
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+
 ENTRYPOINT ["/entrypoint.sh"]
