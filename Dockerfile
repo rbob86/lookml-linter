@@ -19,10 +19,10 @@ RUN pip install lkml
 RUN mkdir /usr/src/app/
 WORKDIR /usr/src/app/
 
-COPY ./linter .
+COPY . .
 COPY config.example.yaml .
 
-CMD [ "python3", "-m" , "linter.main", "config.example.yaml"]
+CMD [ "python", "-m" , "/usr/src/app/linter.main", "config.example.yaml"]
 
 # ADD entrypoint.sh /entrypoint.sh
 # RUN chmod +x /entrypoint.sh
