@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-
-python -m /usr/src/app/linter.main config.example.yaml
+echo ls -la 
+python -m linter.main config.example.yaml
