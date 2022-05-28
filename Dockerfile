@@ -23,4 +23,4 @@ RUN pip3 install -r requirements.txt
 
 RUN ls -la
 
-ENTRYPOINT ["python", "./lookml-linter/linter/main.py", "config.example.yaml"]
+ENTRYPOINT ["python", "./linter/main.py", "config.example.yaml"]
