@@ -9,9 +9,6 @@ LABEL "repository"="https://github.com/rbob86/lookml-linter/tree/main/linter/rul
 LABEL "homepage"="https://github.com/rbob86/lookml-linter"
 LABEL "maintainer"="Eric"
 
-RUN mkdir /usr/src/app/
-WORKDIR /usr/src/app/
-
 COPY . .
 
 RUN python -m pip install  --upgrade pip
@@ -26,6 +23,6 @@ RUN ls -la
 
 # CMD [ "python", "-m" , "linter.main", "config.example.yaml"]
 
-RUN ["chmod", "+x", "/usr/src/app/entrypoint.sh"]
+RUN ["chmod", "+x", "./entrypoint.sh"]
 
-ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
