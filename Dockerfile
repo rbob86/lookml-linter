@@ -31,4 +31,4 @@ RUN ls -la
 
 RUN chmod +x ./entrypoint.sh
 
-ENTRYPOINT ["/usr/src/app//entrypoint.sh"]
+ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
