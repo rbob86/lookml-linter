@@ -21,7 +21,6 @@ RUN pip install jsonschema
 RUN pip install pytest
 RUN pip install lkml
 
-ADD entrypoint.sh ./entrypoint.sh
 
 RUN ls -la
 
@@ -32,4 +31,4 @@ RUN ls -la
 
 RUN chmod +x ./entrypoint.sh
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["/usr/src/app//entrypoint.sh"]
