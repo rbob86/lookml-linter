@@ -21,6 +21,8 @@ RUN pip install jsonschema
 RUN pip install pytest
 RUN pip install lkml
 
+RUN ls -la
+
 
 CMD [ "python", "-m" , "linter.main", "config.example.yaml"]
 
