@@ -21,4 +21,4 @@ RUN pip install lkml
 
 RUN ls -la
 
-ENTRYPOINT ["python", "./linter/main.py", "config.example.yaml"]
+ENTRYPOINT ["python", "./lookml-linter/linter/main.py", "config.example.yaml"]
