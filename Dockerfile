@@ -17,4 +17,5 @@ RUN pip install pytest
 RUN pip install lkml
 
 ADD entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
