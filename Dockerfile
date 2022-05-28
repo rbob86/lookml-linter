@@ -21,8 +21,4 @@ RUN pip install lkml
 
 RUN ls -la
 
-# CMD [ "python", "-m" , "linter.main", "config.example.yaml"]
-
-RUN chmod 777 ./entrypoint.sh && ln -s ./-entrypoint.sh
-
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["python", "-m" , "linter.main", "config.example.yaml"]
