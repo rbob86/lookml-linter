@@ -22,7 +22,7 @@ WORKDIR /usr/src/app/
 COPY ./linter .
 COPY config.example.yaml .
 
-CMD [ "python", "-m" , "linter.main", "config.example.yaml"]
+CMD [ "python3", "-m" , "linter.main", "config.example.yaml"]
 
 # ADD entrypoint.sh /entrypoint.sh
 # RUN chmod +x /entrypoint.sh
