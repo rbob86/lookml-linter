@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.8-slim-buster
 
 LABEL "com.github.actions.name"="Snazzy-Linter"
 LABEL "com.github.actions.description"="Automatic code reviewer for GitHub PRs."
@@ -11,12 +11,19 @@ LABEL "maintainer"="Eric"
 
 COPY . .
 
-RUN python pip install  --upgrade pip
-RUN pip install looker-sdk
-RUN pip install pyyaml
-RUN pip install jsonschema 
-RUN pip install pytest
-RUN pip install lkml
+WORKDIR 
+
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+
+# COPY . .
+
+# RUN python pip install  --upgrade pip
+# RUN pip install looker-sdk
+# RUN pip install pyyaml
+# RUN pip install jsonschema 
+# RUN pip install pytest
+# RUN pip install lkml
 
 
 RUN ls -la
