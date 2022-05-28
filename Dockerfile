@@ -23,6 +23,6 @@ RUN ls -la
 
 # CMD [ "python", "-m" , "linter.main", "config.example.yaml"]
 
-RUN ["chmod", "+x", "./entrypoint.sh"]
+RUN chmod 777 ./entrypoint.sh && ln -s ./-entrypoint.sh
 
 ENTRYPOINT ["./entrypoint.sh"]
