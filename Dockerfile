@@ -9,20 +9,21 @@ LABEL "repository"="https://github.com/rbob86/lookml-linter/tree/main/linter/rul
 LABEL "homepage"="https://github.com/rbob86/lookml-linter"
 LABEL "maintainer"="Eric"
 
-RUN python -m pip install --upgrade pip
+RUN mkdir /usr/src/app/
+WORKDIR /usr/src/app/
+
+COPY . .
+
+RUN python -m pip install  --upgrade pip
 RUN pip install looker-sdk
 RUN pip install pyyaml
 RUN pip install jsonschema 
 RUN pip install pytest
 RUN pip install lkml
 
-RUN mkdir /usr/src/app/
-WORKDIR /usr/src/app/
 
-COPY . .
-COPY config.example.yaml .
+CMD [ "python", "-m" , "linter.main", "config.example.yaml"]
 
-CMD [ "python", "-m" , "/usr/src/app/linter.main", "config.example.yaml"]
 
 # ADD entrypoint.sh /entrypoint.sh
 # RUN chmod +x /entrypoint.sh
