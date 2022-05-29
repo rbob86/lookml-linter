@@ -9,9 +9,14 @@ LABEL "repository"="https://github.com/rbob86/lookml-linter/tree/main/linter/rul
 LABEL "homepage"="https://github.com/rbob86/lookml-linter"
 LABEL "maintainer"="Eric"
 
+RUN ls -la
 
-COPY lookml-linter/ /usr/lib/python3.8/lookml-linter/
+COPY . .
+RUN ls -la
 
+COPY linter/ /usr/lib/python3.8/linter/
+
+RUN ls -la
 
 RUN python3 -m pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt
