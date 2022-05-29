@@ -9,13 +9,15 @@ LABEL "repository"="https://github.com/rbob86/lookml-linter/tree/main/linter/rul
 LABEL "homepage"="https://github.com/rbob86/lookml-linter"
 LABEL "maintainer"="Eric"
 
-RUN ls -la
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
 COPY . .
 RUN ls -la
 
 RUN python3 -m pip install --upgrade pip
 RUN pip3 install -r requirements.txt
+ENV PYTHONPATH /linter
 # RUN pip3 install linter/
 
 
@@ -27,6 +29,5 @@ RUN pip3 install -r requirements.txt
 # RUN pip install lkml
 
 
-RUN ls -la
 
 CMD ["python3", "-m", "linter.main", "config.example.yaml"]
