@@ -16,7 +16,7 @@ RUN ls -la
 
 COPY linter/ /usr/lib/python3.8/linter/
 
-RUN ls -la
+RUN ls -la /usr/local/bin/python3
 
 RUN python3 -m pip install --upgrade pip
 RUN pip3 install -r requirements.txt
