@@ -14,7 +14,7 @@ RUN ls -la
 COPY . .
 RUN ls -la
 
-COPY linter/ /usr/lib/python3.8/linter/
+COPY linter/ /usr/local/bin/python3/linter/
 
 RUN ls -la /usr/local/bin/python3
 
