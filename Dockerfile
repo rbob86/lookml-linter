@@ -9,11 +9,13 @@ LABEL "repository"="https://github.com/rbob86/lookml-linter/tree/main/linter/rul
 LABEL "homepage"="https://github.com/rbob86/lookml-linter"
 LABEL "maintainer"="Eric"
 
-COPY . .
 
-RUN python3 -m pip3 install --upgrade pip3
+COPY lookml-linter/ /usr/lib/python3.8/lookml-linter/
+
+
+RUN python3 -m pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt
-RUN pip3 install .
+
 
 # RUN python pip install  --upgrade pip
 # RUN pip install looker-sdk
