@@ -16,6 +16,8 @@ def main():
 
 #     args = parser.parse_args()
 
+    cwd = os.getcwd()
+    print(cwd)
     config_file = os.environ['INPUT_CONFIGFILE']
     path = os.environ['INPUT_LOOKMLPROJECT']
     
