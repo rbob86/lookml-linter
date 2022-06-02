@@ -11,7 +11,5 @@ inputs:
 runs:
   using: docker
   image: Dockerfile
-
-branding:
-  icon: code
-  color: gray-dark
+  args:
+    - ${{ inputs.lookMlProject }}
