@@ -7,8 +7,8 @@ RUN pip install -r requirements.txt
 
 RUN ls -la
 
-ENV PYTHONPATH "${PYTHONPATH}:/linter"
-
-RUN echo ${PYTHONPATH}
+RUN echo "${PYTHONPATH}"
+ENV PYTHONPATH="${PYTHONPATH}:/linter/"
+RUN echo "${PYTHONPATH}"
 
 ENTRYPOINT python /linter/main.py -c ./config.example.yaml
