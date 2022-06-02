@@ -6,7 +6,7 @@ inputs:
   lookMlProject: # id of input
     description: "path to lookml project"
     required: true
-    default: "./"
+    default: "."
 
 runs:
   using: docker
