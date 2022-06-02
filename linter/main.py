@@ -21,6 +21,6 @@ def main():
     linter = LookMlLinter(data, rules)
     linter.run()
     linter.print_errors()
-    assert linter.linter_severity_status == True, "Houston we've got a problem"
+    assert linter.linter_severity_status == True, "LookML Linter detected an error warning, please resolve any error warns to complete Pull Request"
 
 main()
