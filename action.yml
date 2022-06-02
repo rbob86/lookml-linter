@@ -6,7 +6,7 @@ inputs:
   configFile: # id of input
     description: "path to lookml project"
     required: true
-    default: "config.example.yaml"
+    default: ${{ github.workspace }}/.github/workflows/config.example.yaml
 #   lookMlProject: # id of input
 #     description: "path to lookml project"
 #     required: true
