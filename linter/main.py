@@ -8,15 +8,15 @@ from linter.lookml_project_parser import LookMlProjectParser
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Args for LookML linter.')
-    parser.add_argument('--configFile','-c', type=str,
-                    help='file path for configuartion settings file')
-    parser.add_argument('--lookmlProjectPath','-l', type=str,
-                    help='path for the lookml files')
+#     parser = argparse.ArgumentParser(description='Args for LookML linter.')
+#     parser.add_argument('--configFile','-c', type=str,
+#                     help='file path for configuartion settings file')
+#     parser.add_argument('--lookmlProjectPath','-l', type=str,
+#                     help='path for the lookml files')
 
-    args = parser.parse_args()
+#     args = parser.parse_args()
 
-    config_file = args.configFile
+    config_file = os.environ['INPUT_CONFIGFILE']
     path = os.environ['INPUT_LOOKMLPROJECT']
     
 
