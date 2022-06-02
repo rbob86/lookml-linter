@@ -11,7 +11,7 @@ def main():
     parser = argparse.ArgumentParser(description='Args for LookML linter.')
     parser.add_argument('--configFile','-c', type=str,
                     help='file path for configuartion settings file')
-    parser.add_argument('--lookmlProjectPath','-l' type=str,
+    parser.add_argument('--lookmlProjectPath','-l', type=str,
                     help='path for the lookml files')
 
     args = parser.parse_args()
