@@ -13,6 +13,7 @@ class LookMlLinter:
     def __init__(self, data: Dict, rules: Dict[str, List[RuleEngineType]]) -> None:
         self.data = data
         self.rules = rules
+        self.linter_severity_status = True
 
     def run(self) -> None:
         self._errors = []
@@ -56,5 +57,7 @@ class LookMlLinter:
                 if runner.severity != Severity.IGNORE.value:
                     success = runner.run(object)
                     if not success:
+                        if runner.severity == 'error' and self.linter_severity_status:
+                            self.linter_severity_status = False
                         error_msg = f'{runner.severity}: {object_type} {object["name"]} - {rule["name"]}'
                         self._errors[-1]['messages'].append(error_msg)
