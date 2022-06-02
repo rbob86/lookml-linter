@@ -18,6 +18,9 @@ def main():
 
     cwd = os.getcwd()
     print(cwd)
+    files = [f for f in os.listdir('.') if os.path.isfile(f)]
+    for f in files:
+        print(f)    
     config_file = os.environ['INPUT_CONFIGFILE']
     path = os.environ['INPUT_LOOKMLPROJECT']
     
