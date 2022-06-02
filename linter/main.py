@@ -21,6 +21,7 @@ def main():
     linter = LookMlLinter(data, rules)
     linter.run()
     linter.print_errors()
+    assert linter.linter_severity_status == True
 
 
 main()
