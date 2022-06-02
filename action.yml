@@ -16,4 +16,6 @@ runs:
   using: docker
   image: Dockerfile
   args:
+    - ${{ inputs.configFile }}
     - ${{ inputs.lookMlProject }}
+
