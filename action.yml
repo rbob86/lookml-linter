@@ -3,14 +3,10 @@ author:
 description: Lint LookML Projects and create Pull Request reviews with linting violations.
 
 inputs:
-  failIf:
-    description: Fail if *any* violations are detected or only *new* ones (valid values are "new" or "any")
-    required: false
-    default: new
-  args:
-    description: None
-    required: false
-    default: 
+  lookMlProject: # id of input
+    description: "path to lookml project"
+    required: true
+    default: "/./"
 
 runs:
   using: docker
