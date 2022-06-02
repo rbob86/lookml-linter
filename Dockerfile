@@ -5,10 +5,6 @@ COPY . .
 RUN python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-RUN ls -la
-
-RUN echo "${PYTHONPATH}"
 ENV PYTHONPATH="${PYTHONPATH}:/./"
-RUN echo "${PYTHONPATH}"
 
 ENTRYPOINT python /linter/main.py
