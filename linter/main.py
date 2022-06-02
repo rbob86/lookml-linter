@@ -1,12 +1,10 @@
 import sys
+import os
 import argparse
 from linter.config_validator import ConfigValidator
 from linter.lookml_linter import LookMlLinter
 from linter.rules_engine import RulesEngine
 from linter.lookml_project_parser import LookMlProjectParser
-
-
-
 
 
 def main():
@@ -19,7 +17,7 @@ def main():
     args = parser.parse_args()
 
     config_file = args.configFile
-    path = args.lookmlProjectPath
+    path = os.environ['INPUT_LOOKMLPROJECT']
     
 
     validator = ConfigValidator(config_file)
