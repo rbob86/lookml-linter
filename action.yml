@@ -7,15 +7,15 @@ inputs:
     description: "path to lookml project"
     required: true
     default: "config.example.yaml"
-  lookMlProject: # id of input
-    description: "path to lookml project"
-    required: true
-    default: "."
+#   lookMlProject: # id of input
+#     description: "path to lookml project"
+#     required: true
+#     default: "."
 
 runs:
   using: docker
   image: Dockerfile
   args:
     - ${{ inputs.configFile }}
-    - ${{ inputs.lookMlProject }}
+#     - ${{ inputs.lookMlProject }}
 
