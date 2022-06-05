@@ -1,5 +1,5 @@
-from linter.helpers import snake_case_to_pascal_case
 import pytest
+from linter.helpers import snake_case_to_pascal_case
 from linter.rule import Severity
 from linter.rule_factory import RuleFactory
 from linter.rules_engine import RulesEngine

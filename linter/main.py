@@ -1,8 +1,8 @@
 import os
 from linter.config_validator import ConfigValidator
 from linter.lookml_linter import LookMlLinter
-from linter.rules_engine import RulesEngine
 from linter.lookml_project_parser import LookMlProjectParser
+from linter.rules_engine import RulesEngine
 
 
 def main():
@@ -18,7 +18,7 @@ def main():
     linter = LookMlLinter(data, rules)
     linter.run()
     linter.print_errors()
-    assert linter.has_errors == False, "LookML Linter detected an error warning, please resolve any error warning to complete Pull Request"
+    assert linter.has_errors == False, 'LookML Linter detected an error warning, please resolve any error warning to complete Pull Request'
 
 
 main()

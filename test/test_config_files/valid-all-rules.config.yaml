@@ -1,0 +1,28 @@
+- rule: field_requires_description
+  severity: warning
+- rule: view_with_many_fields_requires_fields_hidden_by_default
+  severity: warning
+- rule: view_with_dimensions_and_measures_has_one_primary_key
+  severity: error
+- rule: dimension_group_of_type_time_requires_datatype
+  severity: warning
+- rule: dimension_group_of_type_time_requires_timeframe
+  severity: warning
+- rule: explore_joins_require_relationship
+  severity: warning
+- rule: explore_requires_description
+  severity: warning
+- rule: explore_joins_contain_many_to_many_relationship
+  severity: warning
+- rule: field_sql_html_requires_user_attribute_when_search_terms_found
+  severity: error
+  param_sets:
+    - user_attribute: test
+      search_terms:
+        - a
+          b
+          c
+    - user_attribute: test2
+      search_terms:
+        - x
+          y

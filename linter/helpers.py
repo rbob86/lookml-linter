@@ -8,4 +8,6 @@ def pascal_case_to_snake_case(pascal_case: str) -> str:
         if char.isupper():
             snake_case += '_'
         snake_case += char.lower()
-    return snake_case[1:]
+    if snake_case[0] == '_':
+        return snake_case[1:]
+    return snake_case
