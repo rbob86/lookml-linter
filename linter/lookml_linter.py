@@ -1,6 +1,5 @@
 
 from typing import Dict, List, TypedDict
-from linter.helpers import pascal_case_to_snake_case
 from linter.rule import Rule, Severity
 
 

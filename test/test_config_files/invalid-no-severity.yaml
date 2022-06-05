@@ -1,0 +1,13 @@
+- rule: view_with_many_fields_requires_fields_hidden_by_default
+- rule: field_sql_html_requires_user_attribute_when_search_terms_found
+  severity: error
+  param_sets:
+    - user_attribute: test
+      search_terms:
+        - a
+          b
+          c
+    - user_attribute: test2
+      search_terms:
+        - x
+          y
