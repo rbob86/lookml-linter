@@ -30,7 +30,7 @@ class RulesEngine:
     def rule_names() -> List[str]:
         dir = RulesEngine.rules_dir
         return [Path(f).stem for f in listdir(
-                dir) if path.isfile(path.join(dir, f))]
+                dir) if path.isfile(path.join(dir, f)) and Path(f).stem != '__init__']
 
     def __add(self, rule, rule_name: str) -> None:
         for object_type in rule.__class__.applies_to():
