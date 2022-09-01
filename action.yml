@@ -7,15 +7,15 @@ inputs:
     description: "path to lookml project"
     required: true
     default: ${{ github.workspace }}/.github/workflows/config.example.yaml
-#   lookMlProject: # id of input
-#     description: "path to lookml project"
-#     required: true
-#     default: "."
+  lookMlProject: # directory containing files
+    description: "path to lookml files"
+    required: false
+
 
 runs:
   using: docker
   image: Dockerfile
   args:
     - ${{ inputs.configFile }}
-#     - ${{ inputs.lookMlProject }}
+    - ${{ inputs.lookMlProject }}
 

@@ -5,21 +5,22 @@ import glob
 
 class LookMlProjectParser:
 
-    root_file_path = "./"
 
-    def __init__(self) -> None:
+    def __init__(self, lkml_dir: str) -> None:
         '''parse a list of LookML filepaths and then read into dictionary object
         Args:
             infilepath (list): list of input LookML file paths
         Returns:
 
         '''
-        if os.path.isdir(LookMlProjectParser.root_file_path):
+        self.lkml_dir = lkml_dir
+
+        if os.path.isdir(self.lkml_dir):
             lkml_filepaths = [f for f in glob.glob(
-                LookMlProjectParser.root_file_path + "**/*.lkml", recursive=True)]
+                self.lkml_dir + "**/*.lkml", recursive=True)]
         else:
             raise IOError("Directory does not exist: %s" %
-                          LookMlProjectParser.root_file_path)
+                          self.lkml_dir)
         self.unparsable_lookml_files = []
         self.parsed_lookml_files = {}
 

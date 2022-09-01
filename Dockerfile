@@ -1,10 +1,9 @@
-FROM python:3.8-slim-buster
+FROM python:3.10.5-bullseye
 
 COPY . .
 
-#RUN python -m pip install --upgrade pip
-RUN pip install -r requirements.txt
 
+RUN pip install -r requirements.txt
 ENV PYTHONPATH="${PYTHONPATH}:/./"
 
 ENTRYPOINT python /linter/main.py
