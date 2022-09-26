@@ -10,7 +10,7 @@ setuptools.setup(
     description="Linting tool to enforce LookML best practices",
     long_description=pathlib.Path("README.md").read_text(),
     long_description_content_type="text/markdown",
-    url="https://github.com/rudo-ro/lookml-linter",
+    url="https://github.com/HealthByRo/lookml-linter",
     packages=setuptools.find_packages(),
     py_modules=["linter"],
     scripts=["scripts/lookmllint"],
