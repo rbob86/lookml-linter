@@ -15,6 +15,9 @@ class ParamSet(TypedDict):
 
 
 class Rule(ABC):
+
+    hint = ""
+
     @staticmethod
     @abstractmethod
     def applies_to() -> Tuple[str, ...]:
@@ -27,3 +30,6 @@ class Rule(ABC):
     @abstractmethod
     def run(self, lookml_object) -> bool:
         pass
+
+    def get_hint(self, lookml_object, object_type):
+        return self.hint
