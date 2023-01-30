@@ -14,8 +14,8 @@
   severity: warning
 - rule: explore_joins_contain_many_to_many_relationship
   severity: warning
-- rule: field_sql_html_requires_user_attribute_when_search_terms_found
-  severity: error
+- rule: field_sql_html_requires_user_attribute_when_search_terms_found_exact
+  severity: ignore
   param_sets:
     - user_attribute: test
       search_terms:

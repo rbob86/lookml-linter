@@ -4,7 +4,6 @@ import glob
 
 
 class LookMlProjectParser:
-
     root_file_path = "./"
 
     def __init__(self) -> None:
@@ -22,12 +21,9 @@ class LookMlProjectParser:
                           LookMlProjectParser.root_file_path)
         self.unparsable_lookml_files = []
         self.parsed_lookml_files = {}
-
         for filepath in lkml_filepaths:
-
             if not os.path.exists(filepath):
-                raise IOError("Filename does not exist: %s" % filepath)
-
+                raise IOError("File does not exist: %s" % filepath)
             with open(filepath, 'r') as file:
                 try:
                     self.parsed_lookml_files[filepath] = lkml.load(file)

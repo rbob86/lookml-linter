@@ -1,6 +1,5 @@
 
 from typing import Dict, List, TypedDict
-from linter.helpers import pascal_case_to_snake_case
 from linter.rule import Rule, Severity
 
 
@@ -17,7 +16,6 @@ class LookMlLinter:
 
     def run(self) -> None:
         self._errors = []
-
         for filename in self.data:
             file_data = self.data[filename]
             views = file_data.get('views', [])
@@ -26,7 +24,8 @@ class LookMlLinter:
                 'filename': filename,
                 'messages': []
             })
-
+            for e in explores:
+                self.__lint_object(e, 'explore')
             for v in views:
                 self.__lint_object(v, 'view')
                 dimensions, measures, dimension_groups = [
@@ -37,9 +36,6 @@ class LookMlLinter:
                     self.__lint_object(g, 'dimension_group')
                 for m in measures:
                     self.__lint_object(m, 'measure')
-
-            for e in explores:
-                self.__lint_object(e, 'explore')
 
     def print_errors(self) -> None:
         for error in self._errors:
