@@ -48,7 +48,7 @@ The linter parses the LookML files in the project and checks if there are any ex
   - This rule checks if all explore objects have a description parameter defined.
 - FieldRequiresDescription
   - This rule checks that all fields (measures, dimensions, and dimension_groups) have descriptions added.
-- FieldSqlHtmlRequiresUserAttributeWhenSearchTermsFound
+- FieldSqlHtmlRequiresUserAttributeWhenSearchTermsFoundExact
   - This rule checks fields with the search term in the name use a specific user_attribute to limit the field access.
 - ViewWithDimensionsAndMeasuresHasOnePrimaryKey
   - This rule checks to make sure that views have one field defined as the primary key.
