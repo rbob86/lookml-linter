@@ -1,21 +1,15 @@
-name: Snazzy LookML Linter 
-author: 
+name: Snazzy LookML Linter
+author:
 description: Lint LookML Projects and create Pull Request reviews with linting violations.
 
 inputs:
   configFile: # id of input
-    description: "path to lookml project"
+    description: 'path to lookml project'
     required: true
-    default: ${{ github.workspace }}/.github/workflows/config.example.yaml
-#   lookMlProject: # id of input
-#     description: "path to lookml project"
-#     required: true
-#     default: "."
+    default: ${{ github.workspace }}/.github/config.yaml
 
 runs:
   using: docker
   image: Dockerfile
   args:
     - ${{ inputs.configFile }}
-#     - ${{ inputs.lookMlProject }}
-
