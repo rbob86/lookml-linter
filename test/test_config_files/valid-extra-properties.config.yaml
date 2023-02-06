@@ -15,7 +15,7 @@
   extra_property: test
 - rule: explore_joins_contain_many_to_many_relationship
   severity: warning
-- rule: field_sql_html_requires_user_attribute_when_search_terms_found
+- rule: field_sql_html_requires_user_attribute_when_search_terms_found_exact
   severity: error
   random_property_name:
     - user_attribute: test

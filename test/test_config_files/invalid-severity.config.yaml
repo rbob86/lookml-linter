@@ -1,6 +1,6 @@
 - rule: view_with_many_fields_requires_fields_hidden_by_default
   severity: invalid_severity
-- rule: field_sql_html_requires_user_attribute_when_search_terms_found
+- rule: field_sql_html_requires_user_attribute_when_search_terms_found_exact
   severity: error
   param_sets:
     - user_attribute: test

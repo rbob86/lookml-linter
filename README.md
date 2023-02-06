@@ -65,7 +65,7 @@ Severity attributes can be one of the following:
 Rules can also accept custom parameters. To specify a series of parameters that should be applied to a rule, add a `param_sets` array to the configuration file, e.g.:
 
 ```
-- rule: field_sql_html_requires_user_attribute_when_search_terms_found
+- rule: field_sql_html_requires_user_attribute_when_search_terms_found_exact
   severity: error
   param_sets:
     - user_attribute: test
@@ -79,7 +79,7 @@ Rules can also accept custom parameters. To specify a series of parameters that 
           y
 ```
 
-In this example, the `field_sql_html_requires_user_attribute_when_search_terms_found` rule will be run once per param set, and the rule’s run method will be able to access `user_attribute` and `search_terms`:
+In this example, the `field_sql_html_requires_user_attribute_when_search_terms_found_exact` rule will be run once per param set, and the rule’s run method will be able to access `user_attribute` and `search_terms`:
 
 ```
 user_attribute = self.params['user_attribute']
