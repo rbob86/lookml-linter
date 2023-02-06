@@ -21,7 +21,13 @@ def main():
     linter.run()
     error_log = linter.get_errors()
     print(error_log)
+    linter.save_errors(error_log, '_lookml-linter-output.txt')
     linter.save_errors(error_log, '_lookml-linter-output.txt.lkml')
+    linter.save_errors(error_log, 'lookml-linter-output.txt')
+    linter.save_errors(error_log, 'lookml-linter-output.txt.lkml')
+    linter.save_errors(error_log, 'lookml-linter-output.text')
+    linter.save_errors(error_log, 'lookml-linter-output.log')
+    linter.save_errors(error_log, 'lookml-linter-output.log.lkml')
 
     # Fail GitHub Action only if linter has errors (warnings do not count)
     assert linter.has_errors == False, 'LookML Linter detected an error warning, please resolve any error warning to complete Pull Request'
