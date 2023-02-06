@@ -7,7 +7,6 @@ from linter.lookml_project_parser import LookMlProjectParser
 
 def main():
     config_file = os.environ['INPUT_CONFIGFILE']
-    #path = os.environ['INPUT_LOOKMLPROJECT']
 
     validator = ConfigValidator(config_file)
     validator.validate()
@@ -18,6 +17,10 @@ def main():
     linter = LookMlLinter(data, rules)
     linter.run()
     linter.print_errors()
+    f = open("demofile2.txt", "a")
+    f.write("Now the file has more content!")
+    f.close()
+    print(os.listdir('.'))
     assert linter.has_errors == False, "LookML Linter detected an error warning, please resolve any error warning to complete Pull Request"
 
 
