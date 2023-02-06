@@ -1,11 +1,12 @@
 from linter.rule import Rule
+from typing import Any, Tuple
 
 
 class FieldSqlHtmlRequiresUserAttributeWhenSearchTermsFoundExact(Rule):
-    def applies_to():
+    def applies_to() -> Tuple[str, ...]:
         return ('dimension', 'measure', 'dimension_group')
 
-    def run(self, field):
+    def run(self, field: Any) -> bool:
         user_attribute = self.params['user_attribute']
         search_terms = self.params['search_terms']
         search_pattern = ' '.join([field.get(key, '')

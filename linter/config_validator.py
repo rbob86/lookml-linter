@@ -1,8 +1,8 @@
 import os
 import yaml
 from jsonschema import validate as validate_json_schema
+from linter.rule import Severity
 from linter.rules_engine import RulesEngine
-from linter.rule import ParamSet, Severity
 
 
 class ConfigValidator:
@@ -11,7 +11,7 @@ class ConfigValidator:
             with open(config_file, 'r') as f:
                 self.config = yaml.safe_load(f)
         else:
-            raise Exception(f'Config file at {config_file} not found')
+            raise FileNotFoundError(f'Config file at {config_file} not found')
 
         self.override_schema = {
             'type': 'array',
@@ -28,20 +28,9 @@ class ConfigValidator:
                     },
                     'param_sets': {
                         'type': 'array',
-
-                        # TODO: Runs extremely slowly, figure out solution
-                        # 'items': {
-                        #     'type': 'object',
-                        #     'properties': {
-                        #         'user_attribuste': {'type': 'number'},
-                        #         # 'search_terms': {
-                        #         #     'type': 'array',
-                        #         #     'items': {
-                        #         #         'type': 'string'
-                        #         #     }
-                        #         # },
-                        #     }
-                        # }
+                        'items': {
+                            'type': 'object'
+                        }
                     }
                 },
                 'required': ['rule', 'severity']

@@ -1,8 +1,8 @@
 import os
 from linter.config_validator import ConfigValidator
 from linter.lookml_linter import LookMlLinter
-from linter.rules_engine import RulesEngine
 from linter.lookml_project_parser import LookMlProjectParser
+from linter.rules_engine import RulesEngine
 
 
 def main():
@@ -23,8 +23,8 @@ def main():
     print(error_log)
     linter.save_errors(error_log, '_lookml-linter-output.txt.lkml')
 
-    # Fail GitHub Action only if linter has errors (not warnings)
-    assert linter.has_errors == False, "LookML Linter detected an error warning, please resolve any error warning to complete Pull Request"
+    # Fail GitHub Action only if linter has errors (warnings do not count)
+    assert linter.has_errors == False, 'LookML Linter detected an error warning, please resolve any error warning to complete Pull Request'
 
 
 main()

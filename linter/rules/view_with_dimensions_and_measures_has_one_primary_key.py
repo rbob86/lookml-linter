@@ -1,11 +1,12 @@
 from linter.rule import Rule
+from typing import Any, Tuple
 
 
 class ViewWithDimensionsAndMeasuresHasOnePrimaryKey(Rule):
-    def applies_to():
+    def applies_to() -> Tuple[str, ...]:
         return ('view',)
 
-    def run(self, view):
+    def run(self, view: Any) -> bool:
         dimensions, measures = [
             view.get(key, []) for key in ['dimensions', 'measures']]
         has_primary_key = True
