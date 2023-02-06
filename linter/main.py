@@ -18,7 +18,7 @@ def main():
     linter.run()
     output = linter.get_errors()
     print(output)
-    f = open('lookml-linter-output.log', 'w')
+    f = open('lookml-linter-output.log.lkml', 'w')
     f.write(output)
     f.close()
     print(os.listdir('.'))
