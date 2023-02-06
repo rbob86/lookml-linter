@@ -16,9 +16,10 @@ def main():
     data = LookMlProjectParser().get_parsed_lookml_files()
     linter = LookMlLinter(data, rules)
     linter.run()
-    linter.print_errors()
-    f = open("demofile2.txt", "a")
-    f.write("Now the file has more content!")
+    output = linter.print_errors()
+    print(output)
+    f = open('lookml-linter-output.log', 'a')
+    f.write(output)
     f.close()
     print(os.listdir('.'))
     assert linter.has_errors == False, "LookML Linter detected an error warning, please resolve any error warning to complete Pull Request"

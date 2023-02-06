@@ -38,22 +38,23 @@ class LookMlLinter:
                     self.__lint_object(m, 'measure')
 
     def print_errors(self) -> None:
+        output = ''
         for error in self._errors:
-            print(error['filename'])
+            output += error['filename'])
             if len(error['messages']) == 0:
-                print(f'    No linting warnings/errors found.')
+                output += f'    No linting warnings/errors found.'
             for message in error['messages']:
-                print(f'    {message}')
-            print()
+                output += f'    {message}'
+            output += '\n'
 
     def __lint_object(self, object: Dict, object_type: str) -> None:
         if object_type in self.rules:
             for rule in self.rules[object_type]:
-                runner = rule['instance']
+                runner=rule['instance']
                 if runner.severity != Severity.IGNORE.value:
-                    success = runner.run(object)
+                    success=runner.run(object)
                     if not success:
                         if not self.has_errors and runner.severity == 'error':
-                            self.has_errors = True
-                        error_msg = f'{runner.severity}: {object_type} {object["name"]} - {rule["name"]}'
+                            self.has_errors=True
+                        error_msg=f'{runner.severity}: {object_type} {object["name"]} - {rule["name"]}'
                         self._errors[-1]['messages'].append(error_msg)
