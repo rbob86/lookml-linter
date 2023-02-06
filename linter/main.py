@@ -8,20 +8,22 @@ from linter.lookml_project_parser import LookMlProjectParser
 def main():
     config_file = os.environ['INPUT_CONFIGFILE']
 
+    # Validate config.yaml file
     validator = ConfigValidator(config_file)
     validator.validate()
-    config = validator.config
-    rules = RulesEngine(config).rules
-    #LookMlProjectParser.root_file_path = path
+
+    # Retrieve rules from config and data from LookML files
+    rules = RulesEngine(validator.config).rules
     data = LookMlProjectParser().get_parsed_lookml_files()
+
+    # Run linter and save/print output
     linter = LookMlLinter(data, rules)
     linter.run()
-    output = linter.get_errors()
-    print(output)
-    f = open('lookml-linter-output.log.lkml', 'w')
-    f.write(output)
-    f.close()
-    print(os.listdir('.'))
+    error_log = linter.get_errors()
+    print(error_log)
+    linter.save_errors(error_log, '_lookml-linter-output.txt.lkml')
+
+    # Fail GitHub Action only if linter has errors (not warnings)
     assert linter.has_errors == False, "LookML Linter detected an error warning, please resolve any error warning to complete Pull Request"
 
 

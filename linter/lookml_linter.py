@@ -48,6 +48,11 @@ class LookMlLinter:
             output += '\n'
         return output
 
+    def save_errors(self, output: str, filename: str) -> None:
+        f = open(filename, 'w')
+        f.write(output)
+        f.close()
+
     def __lint_object(self, object: Dict, object_type: str) -> None:
         if object_type in self.rules:
             for rule in self.rules[object_type]:
