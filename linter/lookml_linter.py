@@ -42,9 +42,9 @@ class LookMlLinter:
         for error in self._errors:
             output += error['filename']
             if len(error['messages']) == 0:
-                output += f'    No linting warnings/errors found.'
+                output += f'\n    No linting warnings/errors found.'
             for message in error['messages']:
-                output += f'    {message}'
+                output += f'\n    {message}'
             output += '\n'
         return output
 
