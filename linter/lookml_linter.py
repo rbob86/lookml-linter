@@ -46,6 +46,7 @@ class LookMlLinter:
             for message in error['messages']:
                 output += f'    {message}'
             output += '\n'
+        return output
 
     def __lint_object(self, object: Dict, object_type: str) -> None:
         if object_type in self.rules:
