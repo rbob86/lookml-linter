@@ -11,8 +11,8 @@ from linter.rules.dimension_group_of_type_time_requires_timeframe import Dimensi
 from linter.rules.explore_requires_description import ExploreRequiresDescription
 from linter.rules.explore_joins_require_relationship import ExploreJoinsRequireRelationship
 from linter.rules.explore_joins_contain_many_to_many_relationship import ExploreJoinsContainManyToManyRelationship
+from linter.rules.explore_requires_label import ExploreRequiresLabel
 from linter.rules.field_sql_html_requires_user_attribute_when_search_terms_found_exact import FieldSqlHtmlRequiresUserAttributeWhenSearchTermsFoundExact
-
 
 class RuleFactory:
     def __init__(self) -> None:
