@@ -20,6 +20,8 @@
   severity: ignore
 - rule: field_is_snake_case
   severity: warning
+- rule: view_name_is_snake_case
+  severity: warning
   param_sets:
     - user_attribute: test
       search_terms:

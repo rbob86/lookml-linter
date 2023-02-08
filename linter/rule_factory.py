@@ -14,6 +14,7 @@ from linter.rules.explore_joins_contain_many_to_many_relationship import Explore
 from linter.rules.explore_requires_label import ExploreRequiresLabel
 from linter.rules.field_sql_html_requires_user_attribute_when_search_terms_found_exact import FieldSqlHtmlRequiresUserAttributeWhenSearchTermsFoundExact
 from linter.rules.field_is_snake_case import FieldIsSnakeCase
+from linter.rules.view_name_is_snake_case import ViewNameIsSnakeCase
 
 class RuleFactory:
     def __init__(self) -> None:
