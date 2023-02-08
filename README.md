@@ -16,8 +16,8 @@ The linter parses the LookML files in the project and checks if there are any ex
 
 - DimensionGroupOfTypeTimeRequiresDatatype
   - This rule checks to see if dimension_groups of type time have a datatype parameter specified.
-- DimensionGroupOfTypeTimeRequiresTimeframe
-  - This rule checks if dimension_groups of type time have a timeframe parameter explicitly specified.
+- DimensionGroupOfTypeTimeRequiresTimeframes
+  - This rule checks if dimension_groups of type time have a timeframes parameter explicitly specified.
 - ExploreJoinsRequireRelationship
   - This rule checks that a relationship parameter is explicitly used on joins in explore objects.
 - ExploreRequiresDescription
