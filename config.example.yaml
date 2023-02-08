@@ -6,7 +6,7 @@
   severity: error
 - rule: dimension_group_of_type_time_requires_datatype
   severity: warning
-- rule: dimension_group_of_type_time_requires_timeframe
+- rule: dimension_group_of_type_time_requires_timeframes
   severity: warning
 - rule: explore_joins_require_relationship
   severity: warning
