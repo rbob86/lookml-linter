@@ -13,11 +13,15 @@ from linter.rules.explore_joins_require_relationship import ExploreJoinsRequireR
 from linter.rules.explore_joins_contain_many_to_many_relationship import ExploreJoinsContainManyToManyRelationship
 from linter.rules.explore_requires_label import ExploreRequiresLabel
 from linter.rules.field_sql_html_requires_user_attribute_when_search_terms_found_exact import FieldSqlHtmlRequiresUserAttributeWhenSearchTermsFoundExact
+from linter.rules.field_name_is_snake_case import FieldNameIsSnakeCase
+from linter.rules.view_name_is_snake_case import ViewNameIsSnakeCase
+
 
 class RuleFactory:
     def __init__(self) -> None:
         pass
 
-    def build(self, rule_name: str, severity: Severity, params: Union[ParamSet, None] = None) -> Rule:
+    def build(
+        self, rule_name: str, severity: Severity, params: Union[ParamSet, None] = None) -> Rule:
         classname = snake_case_to_pascal_case(rule_name)
         return globals()[classname](severity, params)
