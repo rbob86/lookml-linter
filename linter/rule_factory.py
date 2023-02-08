@@ -13,6 +13,7 @@ from linter.rules.explore_joins_require_relationship import ExploreJoinsRequireR
 from linter.rules.explore_joins_contain_many_to_many_relationship import ExploreJoinsContainManyToManyRelationship
 from linter.rules.explore_requires_label import ExploreRequiresLabel
 from linter.rules.field_sql_html_requires_user_attribute_when_search_terms_found_exact import FieldSqlHtmlRequiresUserAttributeWhenSearchTermsFoundExact
+from linter.rules.field_is_snake_case import FieldIsSnakeCase
 
 class RuleFactory:
     def __init__(self) -> None:

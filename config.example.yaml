@@ -18,6 +18,8 @@
   severity: warning
 - rule: field_sql_html_requires_user_attribute_when_search_terms_found_exact
   severity: ignore
+- rule: field_is_snake_case
+  severity: warning
   param_sets:
     - user_attribute: test
       search_terms:
