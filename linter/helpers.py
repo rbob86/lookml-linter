@@ -15,8 +15,5 @@ def pascal_case_to_snake_case(pascal_case: str) -> str:
     return snake_case
 
 def is_snake_case(name: str) -> bool:
-    # Pattern to match strings that start with a lowercase letter, followed by one or more lowercase letters
-    # or digits, then zero or more occurrences of an underscore followed by one or more lowercase letters 
-    # or digits, and ends with the end of the string.
     pattern = re.compile(r'^[a-z][a-z0-9]+(_[a-z0-9]+)*$')
     return pattern.match(name) is not None
