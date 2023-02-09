@@ -15,6 +15,7 @@ from linter.rules.explore_requires_label import ExploreRequiresLabel
 from linter.rules.field_sql_html_requires_user_attribute_when_search_terms_found_exact import FieldSqlHtmlRequiresUserAttributeWhenSearchTermsFoundExact
 from linter.rules.field_name_is_snake_case import FieldNameIsSnakeCase
 from linter.rules.view_name_is_snake_case import ViewNameIsSnakeCase
+from linter.rules.count_measure_name_must_start_with_count import CountMeasureNameMustStartWithCount
 
 
 class RuleFactory:
