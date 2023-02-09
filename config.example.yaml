@@ -24,6 +24,8 @@
   severity: warning
 - rule: count_measure_name_must_start_with_count
   severity: warning
+- rule: average_measure_name_must_start_with_avg_or_average
+  severity: warning
   param_sets:
     - user_attribute: test
       search_terms:
