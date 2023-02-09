@@ -18,12 +18,12 @@ from linter.rules.view_name_is_snake_case import ViewNameIsSnakeCase
 from linter.rules.count_measure_name_must_start_with_count import CountMeasureNameMustStartWithCount
 from linter.rules.average_measure_name_must_start_with_avg_or_average import AverageMeasureNameMustStartWithAvgOrAverage
 from linter.rules.sum_measure_name_must_start_with_sum_or_total import SumMeasureNameMustStartWithSumOrTotal
+from linter.rules.yesno_field_name_must_start_with_is_or_has import YesnoFieldNameMustStartWithIsOrHas
 
 class RuleFactory:
     def __init__(self) -> None:
         pass
 
-    def build(
-        self, rule_name: str, severity: Severity, params: Union[ParamSet, None] = None) -> Rule:
+    def build(self, rule_name: str, severity: Severity, params: Union[ParamSet, None] = None) -> Rule:
         classname = snake_case_to_pascal_case(rule_name)
         return globals()[classname](severity, params)

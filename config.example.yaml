@@ -28,6 +28,8 @@
   severity: warning
 - rule: sum_measure_name_must_start_with_sum_or_total
   severity: warning
+- rule: yesno_field_name_must_start_with_is_or_has
+  severity: warning
   param_sets:
     - user_attribute: test
       search_terms:
