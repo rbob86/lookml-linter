@@ -19,6 +19,7 @@ from linter.rules.count_measure_name_must_start_with_count import CountMeasureNa
 from linter.rules.average_measure_name_must_start_with_avg_or_average import AverageMeasureNameMustStartWithAvgOrAverage
 from linter.rules.sum_measure_name_must_start_with_sum_or_total import SumMeasureNameMustStartWithSumOrTotal
 from linter.rules.yesno_field_name_must_start_with_is_or_has import YesnoFieldNameMustStartWithIsOrHas
+from linter.rules.explore_tag_requires_owner import ExploreTagRequiresOwner
 
 class RuleFactory:
     def __init__(self) -> None:
