@@ -8,9 +8,6 @@ class SumMeasureNameMustStartWithSumOrTotal(Rule):
         return ('measure',)
 
     def run(self, field: Any) -> bool:
-        field_name = field['name']
-        type = field.get('type')
-        check_field_type = ['sum', 'sum_distinct']
-        field_name_must_start_with = ['sum','total']
-
-        return check_field_naming_convention_by_type(field_name, type, check_field_type, field_name_must_start_with)
+        if field.get('type') in ['sum', 'sum_distinct']:
+            return field.get('name').startswith('sum_') or field.get('name').startswith('total_')
+        return True

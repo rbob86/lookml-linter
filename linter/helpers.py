@@ -20,15 +20,3 @@ def pascal_case_to_snake_case(pascal_case: str) -> str:
 def is_snake_case(name: str) -> bool:
     pattern = compile(r'^[a-z][a-z0-9]+(_[a-z0-9]+)*$')
     return pattern.match(name) is not None
-
-
-def check_field_naming_convention_by_type(
-    field_name: str,
-    type: str,
-    check_field_type: List[str],
-    field_must_start_with: List[str]
-) -> bool:
-    if type not in check_field_type:
-        return True
-    first_part = field_name.split('_')[0]
-    return first_part in field_must_start_with

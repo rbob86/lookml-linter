@@ -9,7 +9,8 @@ class ExploreTagRequiresOwner(Rule):
 
     def run(self, explore: Any) -> bool:
         if 'tags' in explore:
-            tags = explore['tags']
-            for tag in tags:
-                pattern = compile(r'^owner:')
-                return bool(pattern.match(tag))
+            tags = explore.get('tags')
+            pattern = compile(r'^owner:')
+            tag_contains_owner = [bool(pattern.match(tag)) for tag in tags]
+            return any(tag_contains_owner)
+        return False

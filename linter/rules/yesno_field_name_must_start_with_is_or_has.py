@@ -8,9 +8,6 @@ class YesnoFieldNameMustStartWithIsOrHas(Rule):
         return ('dimension', 'measure')
 
     def run(self, field: Any) -> bool:
-        field_name = field['name']
-        type = field.get('type')
-        check_field_type = ['yesno']
-        field_name_must_start_with = ['is','has']
-
-        return check_field_naming_convention_by_type(field_name, type, check_field_type, field_name_must_start_with)
+        if field.get('type') in ['yesno']:
+            return field.get('name').startswith('is_') or field.get('name').startswith('has_')
+        return True
