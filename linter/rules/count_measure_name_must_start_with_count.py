@@ -1,6 +1,5 @@
 from linter.rule import Rule
 from typing import Any, Tuple
-from linter.helpers import check_field_naming_convention_by_type
 
 
 class CountMeasureNameMustStartWithCount(Rule):
