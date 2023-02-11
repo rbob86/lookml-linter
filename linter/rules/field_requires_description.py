@@ -7,6 +7,6 @@ class FieldRequiresDescription(Rule):
         return ('dimension', 'measure')
 
     def run(self, field: Any) -> bool:
-        if not 'description' in field:
+        if not 'description' in field and field.get('hidden') != 'yes':
             return False
         return True
