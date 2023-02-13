@@ -8,5 +8,5 @@ class YesnoFieldNameMustStartWithIsOrHas(Rule):
 
     def run(self, field: Any) -> bool:
         if field.get('type') in ['yesno']:
-            return field.get('name').startswith('is_') or field.get('name').startswith('has_')
+            return field.get('name').startswith(('is_', 'has_'))
         return True

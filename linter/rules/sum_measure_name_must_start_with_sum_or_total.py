@@ -8,5 +8,5 @@ class SumMeasureNameMustStartWithSumOrTotal(Rule):
 
     def run(self, field: Any) -> bool:
         if field.get('type') in ['sum', 'sum_distinct']:
-            return field.get('name').startswith('sum_') or field.get('name').startswith('total_')
+            return field.get('name').startswith(('sum_', 'total_'))
         return True

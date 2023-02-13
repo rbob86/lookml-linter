@@ -8,5 +8,5 @@ class AverageMeasureNameMustStartWithAvgOrAverage(Rule):
 
     def run(self, field: Any) -> bool:
         if field.get('type') in ['average', 'average_distinct']:
-            return field.get('name').startswith('avg_') or field.get('name').startswith('average_')
+            return field.get('name').startswith(('avg_', 'average_'))
         return True
