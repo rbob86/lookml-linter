@@ -16,8 +16,6 @@
   severity: warning
 - rule: explore_requires_label
   severity: warning
-- rule: field_sql_html_requires_user_attribute_when_search_terms_found_exact
-  severity: ignore
 - rule: field_name_is_snake_case
   severity: warning
 - rule: view_name_is_snake_case
@@ -32,6 +30,8 @@
   severity: warning
 - rule: explore_tag_requires_owner
   severity: warning
+- rule: field_sql_html_requires_user_attribute_when_search_terms_found_exact
+  severity: ignore
   param_sets:
     - user_attribute: test
       search_terms:
