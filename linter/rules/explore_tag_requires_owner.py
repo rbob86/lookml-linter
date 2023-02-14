@@ -13,4 +13,5 @@ class ExploreTagRequiresOwner(Rule):
             pattern = compile(r'^owner:')
             tag_contains_owner = [bool(pattern.match(tag)) for tag in tags]
             return any(tag_contains_owner)
-        return False
+        else:
+            return False
