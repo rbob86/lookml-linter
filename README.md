@@ -22,6 +22,9 @@ The linter parses the LookML files in the project and checks if there are any ex
   - This rule checks that a relationship parameter is explicitly used on joins in explore objects.
 - ExploreRequiresDescription
   - This rule checks if all explore objects have a description parameter defined.
+- ExploreTagRequiresOwner
+  - This rule checks that each explore has an owner defined in its [tag parameter](https://cloud.google.com/looker/docs/reference/param-explore-tags)
+    - `tags: ['owner:your_name'] `
 - FieldRequiresDescription
   - This rule checks that all non-hidden fields (measures, dimensions, and dimension_groups) have descriptions added.
 - FieldSqlHtmlRequiresUserAttributeWhenSearchTermsFound
@@ -30,6 +33,16 @@ The linter parses the LookML files in the project and checks if there are any ex
   - This rule checks to make sure that views have one field defined as the primary key.
 - ViewWithManyFieldsRequiresFieldsHiddenByDefault
   - This rule checks that views with over 50 fields enumerated have the hidden_by_default parameter set.
+- ViewRequiresLabel
+  - This rule checks that all views have a user-friendly label defined.
+- CountMeasureNameMustStartWithCount
+  - This rule checks that the name of type count / count_distinct measures start with `count_`.
+- AverageMeasureNameMustStartWithAvgOrAverage
+  - This rule checks that the name of type average / average_distinct measures starts with `avg_` or `average_`.
+- SumMeasureNameMustStartWithSumOrTotal
+  - This rule checks that the name of type sum / sum_distinct measures starts with `sum_` or `total_`.
+- YesnoFieldNameMustStartWithIsOrHas
+  - This rule checks that the name of type yesno fields starts with `is_` or `has_`.
 
 ### Adding a rule
 
