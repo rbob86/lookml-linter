@@ -22,6 +22,8 @@
   severity: warning
 - rule: explore_requires_always_filter
   severity: warning
+- rule: explore_requires_fields
+  severity: warning
 - rule: field_sql_html_requires_user_attribute_when_search_terms_found_exact
   severity: ignore
   param_sets:
