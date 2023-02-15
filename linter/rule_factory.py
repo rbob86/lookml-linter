@@ -17,6 +17,7 @@ from linter.rules.field_name_is_snake_case import FieldNameIsSnakeCase
 from linter.rules.view_name_is_snake_case import ViewNameIsSnakeCase
 from linter.rules.explore_requires_always_filter import ExploreRequiresAlwaysFilter
 from linter.rules.explore_requires_fields import ExploreRequiresFields
+from linter.rules.primary_key_is_first_dimension_in_view import PrimaryKeyIsFirstDimensionInView
 
 
 class RuleFactory:
