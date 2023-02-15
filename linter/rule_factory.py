@@ -16,6 +16,7 @@ from linter.rules.field_sql_html_requires_user_attribute_when_search_terms_found
 from linter.rules.field_name_is_snake_case import FieldNameIsSnakeCase
 from linter.rules.view_name_is_snake_case import ViewNameIsSnakeCase
 from linter.rules.view_requires_label import ViewRequiresLabel
+from linter.rules.dimension_group_name_ends_with_date_time_or_day_pt import DimensionGroupNameEndsWithDateTimeOrDayPt
 
 
 class RuleFactory:
