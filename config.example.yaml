@@ -24,7 +24,7 @@
   severity: warning
 - rule: dimension_group_name_ends_with_date_time_or_day_pt
   severity: warning
-- rule: yesno_field_label_contains_yesno
+- rule: yesno_field_label_should_not_contain_yesno
   severity: warning
 - rule: count_measure_name_must_start_with_count
   severity: warning

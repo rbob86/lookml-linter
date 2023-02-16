@@ -3,7 +3,7 @@ from typing import Any, Tuple
 from re import search, IGNORECASE
 
 
-class YesnoFieldLabelContainsYesno(Rule):
+class YesnoFieldLabelShouldNotContainYesno(Rule):
     def applies_to() -> Tuple[str, ...]:
         return ('dimension', 'measure')
 
