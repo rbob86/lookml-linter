@@ -9,5 +9,5 @@ class YesnoFieldLabelShouldNotContainYesno(Rule):
 
     def run(self, field: Any) -> bool:
         if field.get('type') == 'yesno':
-            return not search(r'yes/no', field.get('label'), IGNORECASE)
+            return not search(r'(yes[_/]no|yesno|yes[_ ]no|yes[_/]No)', field.get('label'), IGNORECASE)
         return True
