@@ -36,6 +36,11 @@
   severity: warning
 - rule: explore_tag_requires_owner
   severity: warning
+- rule: dimension_group_name_should_not_end_with
+  severity: warning
+  param_sets:
+    - search_terms:
+        - _day_pt
 - rule: field_sql_html_requires_user_attribute_when_search_terms_found_exact
   severity: ignore
   param_sets:
