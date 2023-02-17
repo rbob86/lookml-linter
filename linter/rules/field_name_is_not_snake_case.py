@@ -3,7 +3,7 @@ from typing import Any, Tuple
 from linter.helpers import is_snake_case
 
 
-class FieldNameIsSnakeCase(Rule):
+class FieldNameIsNotSnakeCase(Rule):
     def applies_to() -> Tuple[str, ...]:
         return ('dimension', 'measure')
 

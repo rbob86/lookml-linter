@@ -1,9 +1,9 @@
 from linter.rule import Severity
-from linter.rules.view_name_is_snake_case import ViewNameIsSnakeCase
+from linter.rules.view_name_is_not_snake_case import ViewNameIsNotSnakeCase
 
 
 def test_run_method_successfully_validates_view_name_is_snake_case() -> None:
-    rule = ViewNameIsSnakeCase(Severity.ERROR.value)
+    rule = ViewNameIsNotSnakeCase(Severity.ERROR.value)
 
     view = {
         'dimensions': [
@@ -28,7 +28,7 @@ def test_run_method_successfully_validates_view_name_is_snake_case() -> None:
 
 
 def test_run_method_fails_view_name_is_not_snake_case() -> None:
-    rule = ViewNameIsSnakeCase(Severity.ERROR.value)
+    rule = ViewNameIsNotSnakeCase(Severity.ERROR.value)
 
     view = {
         'dimensions': [
