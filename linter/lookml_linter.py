@@ -20,6 +20,9 @@ class LookMlLinter:
             file_data = self.data[filename]
             views = file_data.get('views', [])
             explores = file_data.get('explores', [])
+            includes = file_data.get('includes', [])
+            first_explore = explores[0]
+            first_explore['includes'] = includes
             self._errors.append({
                 'filename': filename,
                 'messages': []

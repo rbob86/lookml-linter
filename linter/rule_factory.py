@@ -23,6 +23,8 @@ from linter.rules.average_measure_name_must_start_with_avg_or_average import Ave
 from linter.rules.sum_measure_name_must_start_with_sum_or_total import SumMeasureNameMustStartWithSumOrTotal
 from linter.rules.yesno_field_name_must_start_with_is_or_has import YesnoFieldNameMustStartWithIsOrHas
 from linter.rules.explore_tag_requires_owner import ExploreTagRequiresOwner
+from linter.rules.model_file_should_not_have_wildcard_view_includes import ModelFileShouldNotHaveWildcardViewIncludes
+
 
 class RuleFactory:
     def __init__(self) -> None:

@@ -36,6 +36,8 @@
   severity: warning
 - rule: explore_tag_requires_owner
   severity: warning
+- rule: model_file_should_not_have_wildcard_view_includes
+  severity: warning
 - rule: field_sql_html_requires_user_attribute_when_search_terms_found_exact
   severity: ignore
   param_sets:
