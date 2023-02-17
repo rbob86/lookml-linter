@@ -4,7 +4,7 @@
   severity: warning
 - rule: view_with_dimensions_and_measures_has_one_primary_key
   severity: error
-- rule: primary_key_is_first_dimension_in_view
+- rule: primary_key_is_not_first_dimension_in_view
   severity: warning
 - rule: dimension_group_of_type_time_requires_datatype
   severity: warning

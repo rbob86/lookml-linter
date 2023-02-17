@@ -2,7 +2,7 @@ from linter.rule import Rule
 from typing import Any, Tuple
 
 
-class PrimaryKeyIsFirstDimensionInView(Rule):
+class PrimaryKeyIsNotFirstDimensionInView(Rule):
     def applies_to() -> Tuple[str, ...]:
         return ('view',)
 
