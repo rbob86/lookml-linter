@@ -1,9 +1,9 @@
 from linter.rule import Severity
-from linter.rules.primary_key_is_not_first_dimension_in_view import PrimaryKeyIsNotFirstDimensionInView
+from linter.rules.primary_key_is_first_dimension_in_view import PrimaryKeyIsFirstDimensionInView
 
 
 def test_run_method_successfully_validates_primary_key_is_first_dimension() -> None:
-    rule = PrimaryKeyIsNotFirstDimensionInView(Severity.ERROR.value)
+    rule = PrimaryKeyIsFirstDimensionInView(Severity.ERROR.value)
 
     view = {
         'dimensions': [
@@ -28,7 +28,7 @@ def test_run_method_successfully_validates_primary_key_is_first_dimension() -> N
 
 
 def test_run_method_fails_when_primary_key_is_not_first_dimension() -> None:
-    rule = PrimaryKeyIsNotFirstDimensionInView(Severity.ERROR.value)
+    rule = PrimaryKeyIsFirstDimensionInView(Severity.ERROR.value)
 
     view = {
         'dimensions': [

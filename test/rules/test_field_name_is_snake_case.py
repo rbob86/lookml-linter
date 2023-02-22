@@ -1,9 +1,9 @@
 from linter.rule import Severity
-from linter.rules.field_name_is_not_snake_case import FieldNameIsNotSnakeCase
+from linter.rules.field_name_is_snake_case import FieldNameIsSnakeCase
 
 
 def test_run_method_successfully_validates_field_name_is_snake_case() -> None:
-    rule = FieldNameIsNotSnakeCase(Severity.ERROR.value)
+    rule = FieldNameIsSnakeCase(Severity.ERROR.value)
 
     field = {
         'name': 'order_id',
@@ -16,7 +16,7 @@ def test_run_method_successfully_validates_field_name_is_snake_case() -> None:
 
 
 def test_run_method_fails_field_name_is_not_snake_case() -> None:
-    rule = FieldNameIsNotSnakeCase(Severity.ERROR.value)
+    rule = FieldNameIsSnakeCase(Severity.ERROR.value)
 
     field = {
         'name': 'OrderID',
