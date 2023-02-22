@@ -34,13 +34,13 @@ The linter parses the LookML files in the project and checks if there are any ex
 - ViewWithManyFieldsRequiresFieldsHiddenByDefault
   - This rule checks that views with over 50 fields enumerated have the hidden_by_default parameter set.
 - ViewRequiresLabel
-  - This rule checks that all views have a user-friendly label defined.
+  - This rule checks that all views have a label defined.
 - CountMeasureNameMustStartWithCount
-  - This rule checks that the name of type count / count_distinct measures start with `count_`.
+  - This rule checks that the name of type count / count*distinct measures start with `count*`.
 - AverageMeasureNameMustStartWithAvgOrAverage
-  - This rule checks that the name of type average / average_distinct measures starts with `avg_` or `average_`.
+  - This rule checks that the name of type average / average*distinct measures starts with `avg*`or`average\_`.
 - SumMeasureNameMustStartWithSumOrTotal
-  - This rule checks that the name of type sum / sum_distinct measures starts with `sum_` or `total_`.
+  - This rule checks that the name of type sum / sum*distinct measures starts with `sum*`or`total\_`.
 - YesnoFieldNameMustStartWithIsOrHas
   - This rule checks that the name of type yesno fields starts with `is_` or `has_`.
 
