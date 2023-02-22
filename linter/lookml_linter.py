@@ -20,14 +20,13 @@ class LookMlLinter:
             file_data = self.data[filename]
             views = file_data.get('views', [])
             explores = file_data.get('explores', [])
-            if len(explores) > 0:
-                includes = file_data.get('includes', [])
-                first_explore = explores[0]
-                first_explore['includes'] = includes
+            includes = file_data.get('includes', [])
             self._errors.append({
                 'filename': filename,
                 'messages': []
             })
+            for i in includes:
+                self.__lint_object(i, 'include')
             for e in explores:
                 self.__lint_object(e, 'explore')
             for v in views:
