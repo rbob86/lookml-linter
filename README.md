@@ -26,19 +26,21 @@ The linter parses the LookML files in the project and checks if there are any ex
   - This rule checks that each explore has an owner defined in its [tag parameter](https://cloud.google.com/looker/docs/reference/param-explore-tags)
     - `tags: ['owner:your_name'] `
 - FieldRequiresDescription
-  - This rule checks that all fields (measures, dimensions, and dimension_groups) have descriptions added.
+  - This rule checks that all non-hidden fields (measures, dimensions, and dimension_groups) have descriptions added.
 - FieldSqlHtmlRequiresUserAttributeWhenSearchTermsFound
   - This rule checks fields with the search term in the name use a specific user_attribute to limit the field access.
 - ViewWithDimensionsAndMeasuresHasOnePrimaryKey
   - This rule checks to make sure that views have one field defined as the primary key.
 - ViewWithManyFieldsRequiresFieldsHiddenByDefault
   - This rule checks that views with over 50 fields enumerated have the hidden_by_default parameter set.
+- ViewRequiresLabel
+  - This rule checks that all views have a label defined.
 - CountMeasureNameMustStartWithCount
-  - This rule checks that the name of type count / count_distinct measures start with `count_`.
+  - This rule checks that the name of type count / count*distinct measures start with `count*`.
 - AverageMeasureNameMustStartWithAvgOrAverage
-  - This rule checks that the name of type average / average_distinct measures starts with `avg_` or `average_`.
+  - This rule checks that the name of type average / average*distinct measures starts with `avg*`or`average\_`.
 - SumMeasureNameMustStartWithSumOrTotal
-  - This rule checks that the name of type sum / sum_distinct measures starts with `sum_` or `total_`.
+  - This rule checks that the name of type sum / sum*distinct measures starts with `sum*`or`total\_`.
 - YesnoFieldNameMustStartWithIsOrHas
   - This rule checks that the name of type yesno fields starts with `is_` or `has_`.
 
