@@ -26,7 +26,7 @@ class LookMlLinter:
                 'messages': []
             })
             for i in includes:
-                self.__lint_object(i, 'include')
+                self.__lint_object({'name': i}, 'include')
             for e in explores:
                 self.__lint_object(e, 'explore')
             for v in views:

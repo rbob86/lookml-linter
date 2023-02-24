@@ -9,7 +9,4 @@ class IncludeShouldNotHaveViewsWithWildcard(Rule):
 
     def run(self, include: Any) -> bool:
         pattern = r'\*\.view'
-        wildcard_include = [bool(search(pattern, i)) for i in include]
-        if any(wildcard_include):
-            return False
-        return True
+        return not bool(search(pattern, include.get('name')))
