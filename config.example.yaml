@@ -4,6 +4,8 @@
   severity: warning
 - rule: view_with_dimensions_and_measures_has_one_primary_key
   severity: error
+- rule: primary_key_is_first_dimension_in_view
+  severity: warning
 - rule: dimension_group_of_type_time_requires_datatype
   severity: warning
 - rule: dimension_group_of_type_time_requires_timeframes
@@ -20,6 +22,10 @@
   severity: warning
 - rule: view_name_is_snake_case
   severity: warning
+- rule: explore_requires_always_filter
+  severity: warning
+- rule: explore_requires_fields
+  severity: warning
 - rule: view_requires_label
   severity: warning
 - rule: dimension_group_name_should_not_end_with_date_or_time
@@ -35,6 +41,8 @@
 - rule: yesno_field_name_must_start_with_is_or_has
   severity: warning
 - rule: explore_tag_requires_owner
+  severity: warning
+- rule: include_should_not_have_views_with_wildcard
   severity: warning
 - rule: dimension_group_name_should_not_end_with
   severity: warning
