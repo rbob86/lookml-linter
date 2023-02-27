@@ -8,7 +8,7 @@ from linter.rules_engine import RulesEngine
 def main():
     # Read in input variables
     config_file = os.environ['INPUT_CONFIGFILE']
-    filepaths = os.environ['INPUT_FILEPATHS']
+    filepaths = os.environ['INPUT_FILEPATHS'].split(' ')
 
     # Validate config.yaml file
     validator = ConfigValidator(config_file)
