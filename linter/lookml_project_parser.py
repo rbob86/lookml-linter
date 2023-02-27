@@ -1,5 +1,5 @@
 import glob
-from typing import List
+from typing import List, Union
 import lkml
 import os
 
@@ -7,7 +7,7 @@ import os
 class LookMlProjectParser:
     root_file_path = './'
 
-    def __init__(self, filepaths: List[str] = None) -> None:
+    def __init__(self, filepaths: Union[List[str], None]) -> None:
         if os.path.isdir(LookMlProjectParser.root_file_path):
             if filepaths:
                 lkml_filepaths = filter(lambda filepath: filepath.endswith('.lkml'), filepaths)

@@ -6,14 +6,11 @@ from linter.rules_engine import RulesEngine
 
 
 def main():
-    config_file = os.environ['INPUT_CONFIGFILE']
-
-    print('========================')
-    print(os.environ['INPUT_FILEPATHS'])
-    print('========================')
-
     # Validate config.yaml file
-    validator = ConfigValidator(config_file)
+    validator = ConfigValidator(
+        os.environ['INPUT_CONFIGFILE'],
+        os.environ['INPUT_FILEPATHS']
+    )
     validator.validate()
 
     # Retrieve rules from config and data from LookML files
