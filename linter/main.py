@@ -9,7 +9,7 @@ def main():
     config_file = os.environ['INPUT_CONFIGFILE']
 
     print('========================')
-    print(os.environ['INPUT_FILESTOLINT'])
+    print(os.environ['INPUT_FILEPATHS'])
     print('========================')
 
     # Validate config.yaml file

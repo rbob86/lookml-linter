@@ -7,8 +7,8 @@ inputs:
     description: 'path to config file'
     required: true
     default: ${{ github.workspace }}/.github/config.yaml
-  files:
-    description: 'list of files to lint (if using tj-actions/changed-files action in workflow)'
+  filepaths:
+    description: 'list of files to lint (using output of tj-actions/changed-files action in workflow)'
     required: false
     default: null
 

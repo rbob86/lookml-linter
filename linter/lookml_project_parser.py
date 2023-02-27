@@ -1,4 +1,5 @@
 import glob
+from typing import List
 import lkml
 import os
 
@@ -6,10 +7,16 @@ import os
 class LookMlProjectParser:
     root_file_path = './'
 
-    def __init__(self) -> None:
+    def __init__(self, filepaths: List[str] = None) -> None:
         if os.path.isdir(LookMlProjectParser.root_file_path):
-            lkml_filepaths = [f for f in glob.glob(
-                LookMlProjectParser.root_file_path + '**/*.lkml', recursive=True)]
+            if filepaths:
+                lkml_filepaths = filter(lambda filepath: filepath.endswith('.lkml'), filepaths)
+            else:
+                lkml_filepaths = [f for f in glob.glob(
+                    LookMlProjectParser.root_file_path + '**/*.lkml', recursive=True)]
+            print('========================')
+            print(lkml_filepaths)
+            print('========================')
         else:
             raise IOError('Directory does not exist: %s' %
                           LookMlProjectParser.root_file_path)
