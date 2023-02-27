@@ -6,16 +6,17 @@ from linter.rules_engine import RulesEngine
 
 
 def main():
+    # Read in input variables
+    config_file = os.environ['INPUT_CONFIGFILE']
+    filepaths = os.environ['INPUT_FILEPATHS']
+
     # Validate config.yaml file
-    validator = ConfigValidator(
-        os.environ['INPUT_CONFIGFILE'],
-        os.environ['INPUT_FILEPATHS']
-    )
+    validator = ConfigValidator(config_file)
     validator.validate()
 
     # Retrieve rules from config and data from LookML files
     rules = RulesEngine(validator.config).rules
-    data = LookMlProjectParser().get_parsed_lookml_files()
+    data = LookMlProjectParser(filepaths).get_parsed_lookml_files()
 
     # Run linter and save/print output
     linter = LookMlLinter(data, rules)
