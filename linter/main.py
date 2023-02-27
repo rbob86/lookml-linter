@@ -18,15 +18,19 @@ def main():
     rules = RulesEngine(validator.config).rules
     data = LookMlProjectParser(filepaths).get_parsed_lookml_files()
 
-    # Run linter and save/print output
-    linter = LookMlLinter(data, rules)
-    linter.run()
-    error_log = linter.get_errors()
-    print(error_log)
-    linter.save_errors(error_log, '_lookml-linter-output.txt')
+    if data:
+        # Run linter and save/print output
+        linter = LookMlLinter(data, rules)
+        linter.run()
+        error_log = linter.get_errors()
+        print(error_log)
+        linter.save_errors(error_log, '_lookml-linter-output.txt')
 
-    # Fail GitHub Action only if linter has errors (warnings do not count)
-    assert linter.has_errors == False, 'LookML Linter detected an error warning, please resolve any error warning to complete Pull Request'
-
+        # Fail GitHub Action only if linter has errors (warnings do not count)
+        assert linter.has_errors == False, 'LookML Linter detected an error warning, please resolve any error warning to complete Pull Request'
+    elif filepaths:
+        print('No .lkml files changed.')
+    else:
+        print('No .lkml files found in project.')
 
 main()

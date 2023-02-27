@@ -9,12 +9,15 @@ class LookMlProjectParser:
 
     def __init__(self, filepaths: Union[List[str], None] = None) -> None:
         if os.path.isdir(LookMlProjectParser.root_file_path):
+            print('1 ========================')
+            print(filepaths)
+            print('========================')
             if filepaths:
-                lkml_filepaths = filter(lambda filepath: filepath.endswith('.lkml'), filepaths)
+                lkml_filepaths = list(filter(lambda filepath: filepath.endswith('.lkml'), filepaths))
             else:
                 lkml_filepaths = [f for f in glob.glob(
                     LookMlProjectParser.root_file_path + '**/*.lkml', recursive=True)]
-            print('========================')
+            print('2 ========================')
             print(lkml_filepaths)
             print('========================')
         else:
