@@ -8,8 +8,13 @@ from linter.rules_engine import RulesEngine
 def main():
     # Read in input variables
     config_file = os.environ['INPUT_CONFIGFILE']
-    filepaths = os.environ['INPUT_FILEPATHS'].split(' ') if os.environ['INPUT_FILEPATHS'] is not None else None
+    filepaths = os.environ['INPUT_FILEPATHS']
+    filepaths = filepaths.split(' ') if filepaths is not None or filepaths.strip() != '' else None
 
+    print('=====')
+    print(os.environ['INPUT_FILEPATHS'])
+    print(os.environ['INPUT_FILEPATHS'] is None)
+    print(os.environ['INPUT_FILEPATHS'] == '')
     print('=====')
     print(filepaths)
     print('=====')
