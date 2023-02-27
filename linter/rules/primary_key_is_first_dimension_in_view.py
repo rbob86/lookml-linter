@@ -8,6 +8,6 @@ class PrimaryKeyIsFirstDimensionInView(Rule):
 
     def run(self, view: Any) -> bool:
         dimensions = view.get('dimensions', [])
-        if len(dimensions) > 0 and 'primary_key' not in dimensions[0]:
+        if len(dimensions) > 0 and dimensions[0].get('primary_key') != 'yes':
             return False
         return True
