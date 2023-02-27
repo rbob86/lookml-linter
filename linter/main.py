@@ -8,6 +8,10 @@ from linter.rules_engine import RulesEngine
 def main():
     config_file = os.environ['INPUT_CONFIGFILE']
 
+    print('========================')
+    print(os.environ['INPUT_FILESTOLINT'])
+    print('========================')
+
     # Validate config.yaml file
     validator = ConfigValidator(config_file)
     validator.validate()

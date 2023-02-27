@@ -3,10 +3,14 @@ author:
 description: Lint LookML Projects and create Pull Request reviews with linting violations.
 
 inputs:
-  configFile: # id of input
+  configFile:
     description: 'path to lookml project'
     required: true
     default: ${{ github.workspace }}/.github/config.yaml
+  filesToLint:
+    description: 'list of files to lint (if using tj-actions/changed-files action in workflow)'
+    required: false
+    default: null
 
 runs:
   using: docker
