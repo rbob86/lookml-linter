@@ -10,6 +10,10 @@ def main():
     config_file = os.environ['INPUT_CONFIGFILE']
     filepaths = os.environ['INPUT_FILEPATHS'].split(' ') if os.environ['INPUT_FILEPATHS'] is not None else None
 
+    print('=====')
+    print(filepaths)
+    print('=====')
+
     # Validate config.yaml file
     validator = ConfigValidator(config_file)
     validator.validate()
