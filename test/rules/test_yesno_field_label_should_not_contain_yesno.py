@@ -11,6 +11,14 @@ def test_run_method_successfully_validates_yesno_label_does_not_contain_yesno() 
     assert rule_result == True
 
 
+def test_run_method_succeeds_when_yesno_has_no_label() -> None:
+    rule = YesnoFieldLabelShouldNotContainYesno(Severity.ERROR.value)
+
+    field = {'name': 'is_valid', 'type': 'yesno'}
+    rule_result = rule.run(field)
+    assert rule_result == True
+
+
 def test_run_method_fails_when_yesno_label_contains_yesno() -> None:
     rule = YesnoFieldLabelShouldNotContainYesno(Severity.ERROR.value)
 
