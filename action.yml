@@ -4,10 +4,10 @@ description: Lint LookML Projects and create Pull Request reviews with linting v
 
 inputs:
   configFile:
-    description: 'path to lookml project'
+    description: 'path to config file'
     required: true
     default: ${{ github.workspace }}/.github/config.yaml
-  filesToLint:
+  files:
     description: 'list of files to lint (if using tj-actions/changed-files action in workflow)'
     required: false
     default: null
