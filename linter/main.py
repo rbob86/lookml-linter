@@ -9,7 +9,7 @@ def main():
     # Read in input variables
     config_file = os.environ['INPUT_CONFIGFILE']
     filepaths = os.environ['INPUT_FILEPATHS']
-    filepaths = filepaths.split(' ') if filepaths != '' else None
+    filepaths = filepaths.split(' ') if filepaths != None else None
 
     # Validate config.yaml file
     validator = ConfigValidator(config_file)
@@ -28,7 +28,7 @@ def main():
         linter.save_errors(error_log, '_lookml-linter-output.txt')
 
         # Fail GitHub Action only if linter has errors (warnings do not count)
-        assert linter.has_errors == False, 'LookML Linter detected an error warning, please resolve any error warning to complete Pull Request'
+        assert linter.has_errors == False, 'LookML Linter detected an error.'
     elif filepaths:
         print('No .lkml files changed.')
     else:
