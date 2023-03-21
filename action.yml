@@ -11,6 +11,11 @@ inputs:
     description: 'list of files to lint (using output of tj-actions/changed-files action in workflow)'
     required: false
     default: null
+  saveOutputToFile:
+    description: 'Flag to determine whether or not linter output should be saved to a .txt file within repo'
+    required: false
+    default: false
+    type: boolean
 
 runs:
   using: docker
