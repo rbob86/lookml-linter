@@ -28,7 +28,7 @@ def main():
         print(error_log)
 
         # Save output to file, if enabled
-        if save_output_to_file != 'false':
+        if save_output_to_file == 'true' or save_output_to_file == 'True':
             linter.save_errors(error_log, '_lookml-linter-output.txt')
 
         # Fail GitHub Action only if linter has errors (warnings do not count)
