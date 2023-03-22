@@ -1,4 +1,5 @@
 import os
+import subprocess
 from linter.config_validator import ConfigValidator
 from linter.lookml_linter import LookMlLinter
 from linter.lookml_project_parser import LookMlProjectParser
@@ -27,6 +28,13 @@ def main():
         error_log = linter.get_errors()
         print(error_log)
 
+        # Save output to GHA environment variable
+        with open(os.getenv('GITHUB_ENV'), 'a') as fh:
+            error_log = error_log.replace('    ', '&nbsp;&nbsp;&nbsp;&nbsp;')
+            fh.write("error_log<<EOF\n")
+            fh.write(error_log)
+            fh.write("EOF\n")
+        
         # Save output to file, if enabled
         if save_output_to_file == 'true' or save_output_to_file == 'True':
             linter.save_errors(error_log, '_lookml-linter-output.txt')
