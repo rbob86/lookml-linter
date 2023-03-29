@@ -44,6 +44,8 @@
   severity: warning
 - rule: include_should_not_have_views_with_wildcard
   severity: warning
+- rule: view_must_have_unique_sql_table_name
+  severity: warning
 - rule: dimension_group_name_should_not_end_with
   severity: warning
   param_sets:

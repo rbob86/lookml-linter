@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from enum import Enum
-from typing import List, Tuple, TypedDict, Union
+from typing import Any, List, Tuple, TypedDict, Union
 
 
 class Severity(Enum):
@@ -25,5 +25,5 @@ class Rule(ABC):
         self.params = params
 
     @abstractmethod
-    def run(self, lookml_object) -> bool:
+    def run(self, lookml_object, runtime_params: Union[Any, None] = None) -> bool:
         pass

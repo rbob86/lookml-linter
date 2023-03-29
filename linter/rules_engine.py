@@ -2,6 +2,7 @@ import functools
 from os import path, listdir
 from pathlib import Path
 from typing import Dict, List
+from linter.rule import Severity
 from linter.rule_factory import RuleFactory
 
 
@@ -15,6 +16,8 @@ class RulesEngine:
         for rule_name in RulesEngine.rule_names():
             config_for_rule = config_by_rule_name[rule_name]
             severity = config_for_rule['severity']
+            if severity == Severity.IGNORE.value:
+                continue
             param_sets = config_for_rule['param_sets'] if 'param_sets' in config_for_rule else None
             # Instantiate rule with config attributes applied
             if param_sets:

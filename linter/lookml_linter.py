@@ -13,6 +13,7 @@ class LookMlLinter:
         self.data = data
         self.rules = rules
         self.has_errors = False
+        self.sql_table_names = {}
 
     def run(self) -> None:
         self._errors = []
@@ -57,13 +58,14 @@ class LookMlLinter:
         f.close()
 
     def __lint_object(self, object: Dict, object_type: str) -> None:
-        if object_type in self.rules:
-            for rule in self.rules[object_type]:
-                runner = rule['instance']
-                if runner.severity != Severity.IGNORE.value:
-                    success = runner.run(object)
-                    if not success:
-                        if not self.has_errors and runner.severity == 'error':
-                            self.has_errors = True
-                        error_msg = f'{runner.severity}: {object_type} {object["name"]} - {rule["name"]}'
-                        self._errors[-1]['messages'].append(error_msg)
+        for rule in self.rules[object_type]:
+            runner = rule['instance']
+            if rule['name'] == 'view_must_have_unique_sql_table_name':
+                success = runner.run(object, self.sql_table_names)
+            else:
+                success = runner.run(object)
+            if not success:
+                if not self.has_errors and runner.severity == 'error':
+                    self.has_errors = True
+                error_msg = f'{runner.severity}: {object_type} {object["name"]} - {rule["name"]}'
+                self._errors[-1]['messages'].append(error_msg)

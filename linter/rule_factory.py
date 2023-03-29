@@ -2,7 +2,6 @@ from typing import Union
 from linter.helpers import snake_case_to_pascal_case
 from linter.rule import ParamSet, Rule, Severity
 
-# TODO: AUTO-IMPORT RULES
 from linter.rules.field_requires_description import FieldRequiresDescription
 from linter.rules.view_with_many_fields_requires_fields_hidden_by_default import ViewWithManyFieldsRequiresFieldsHiddenByDefault
 from linter.rules.view_with_dimensions_and_measures_has_one_primary_key import ViewWithDimensionsAndMeasuresHasOnePrimaryKey
@@ -28,7 +27,7 @@ from linter.rules.sum_measure_name_must_start_with_sum_or_total import SumMeasur
 from linter.rules.yesno_field_name_must_start_with_is_or_has import YesnoFieldNameMustStartWithIsOrHas
 from linter.rules.explore_tag_requires_owner import ExploreTagRequiresOwner
 from linter.rules.include_should_not_have_views_with_wildcard import IncludeShouldNotHaveViewsWithWildcard
-
+from linter.rules.view_must_have_unique_sql_table_name import ViewMustHaveUniqueSqlTableName
 
 class RuleFactory:
     def __init__(self) -> None:
