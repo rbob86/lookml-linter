@@ -18,5 +18,5 @@ def pascal_case_to_snake_case(pascal_case: str) -> str:
 
 
 def is_snake_case(name: str) -> bool:
-    pattern = compile(r'^[a-z][a-z0-9]+(_[a-z0-9]+)*$')
+    pattern = compile(r'^[a-z0-9]+(_[a-z0-9]+)*$')
     return pattern.match(name) is not None

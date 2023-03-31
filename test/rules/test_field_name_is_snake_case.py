@@ -6,7 +6,7 @@ def test_run_method_successfully_validates_field_name_is_snake_case() -> None:
     rule = FieldNameIsSnakeCase(Severity.ERROR.value)
 
     field = {
-        'name': 'order_id',
+        'name': 't_order_id',
         'primary_key': 'yes',
         'sql': '${TABLE}.ORDER_ID',
         'type': 'number',
