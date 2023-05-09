@@ -67,5 +67,6 @@ class LookMlLinter:
             if not success:
                 if not self.has_errors and runner.severity == 'error':
                     self.has_errors = True
-                error_msg = f'{runner.severity}: {object_type} {object["name"]} - {rule["name"]}'
+                emoji = ':x:' if runner.severity == 'error' else (':warning:' if runner.severity == 'warning' else '')
+                error_msg = f'{emoji}{runner.severity}: {object_type} {object["name"]} - {rule["name"]}'
                 self._errors[-1]['messages'].append(error_msg)
