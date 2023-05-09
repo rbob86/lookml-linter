@@ -30,6 +30,7 @@ from linter.rules.include_should_not_have_views_with_wildcard import IncludeShou
 from linter.rules.view_must_have_unique_sql_table_name import ViewMustHaveUniqueSqlTableName
 from linter.rules.label_is_camel_case import LabelIsCamelCase
 from linter.rules.count_distinct_measure_name import CountDistinctMeasureName
+from linter.rules.primary_key_prefix_and_is_hidden import PrimaryKeyPrefixAndIsHidden
 
 class RuleFactory:
     def __init__(self) -> None:
