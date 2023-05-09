@@ -68,6 +68,6 @@ class LookMlLinter:
             if not success:
                 if not self.has_errors and runner.severity == 'error':
                     self.has_errors = True
-                emoji = ':x: ' if runner.severity == 'error' else (':warning: ' if runner.severity == 'warning' else '')
-                error_msg = f'{emoji}{runner.severity}: {object_type} {lookml_object["name"]} - {runner.message()}'
+                emoji = ':x:' if runner.severity == 'error' else (':warning:' if runner.severity == 'warning' else '')
+                error_msg = f'{emoji} {object_type} {lookml_object["name"]} - {runner.message()}'
                 self._errors[-1]['messages'].append(error_msg)
