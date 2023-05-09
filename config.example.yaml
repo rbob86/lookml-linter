@@ -1,3 +1,5 @@
+- rule: label_is_camel_case
+  severity: ignore
 - rule: field_requires_description
   severity: warning
 - rule: view_with_many_fields_requires_fields_hidden_by_default

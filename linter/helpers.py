@@ -20,3 +20,7 @@ def pascal_case_to_snake_case(pascal_case: str) -> str:
 def is_snake_case(name: str) -> bool:
     pattern = compile(r'^[a-z0-9]+(_[a-z0-9]+)*$')
     return pattern.match(name) is not None
+
+def is_camel_case_with_space(name: str) -> bool:
+    pattern = compile(r'^[A-Z][a-z0-9]+(\s[A-Z][a-z0-9]+)*$')
+    return pattern.match(name) is not None

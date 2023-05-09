@@ -28,6 +28,7 @@ from linter.rules.yesno_field_name_must_start_with_is_or_has import YesnoFieldNa
 from linter.rules.explore_tag_requires_owner import ExploreTagRequiresOwner
 from linter.rules.include_should_not_have_views_with_wildcard import IncludeShouldNotHaveViewsWithWildcard
 from linter.rules.view_must_have_unique_sql_table_name import ViewMustHaveUniqueSqlTableName
+from linter.rules.label_is_camel_case import LabelIsCamelCase
 
 class RuleFactory:
     def __init__(self) -> None:
