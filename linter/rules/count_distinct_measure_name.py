@@ -12,3 +12,6 @@ class CountDistinctMeasureName(Rule):
             if name:
                 return name.startswith('unique_') or name.startswith('count_of_unique_')
         return True
+
+    def message(self) -> str:
+        return 'Count Distinct measure name should start with unique_ or count_of_unique_'

@@ -12,3 +12,6 @@ class PrimaryKeyPrefixAndIsHidden(Rule):
             return lookml_object.get('name') and lookml_object['name'].startswith('pk_') \
                 and lookml_object.get('hidden') and lookml_object['hidden'] == 'yes'
         return True
+
+    def message(self) -> str:
+        return 'Primary Key dimension name should start with pk_ and be hidden'
