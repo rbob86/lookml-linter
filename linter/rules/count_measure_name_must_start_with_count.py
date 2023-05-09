@@ -1,12 +1,12 @@
 from linter.rule import Rule
-from typing import Any, Tuple
+from typing import Any, Tuple, Union
 
 
 class CountMeasureNameMustStartWithCount(Rule):
-    def applies_to() -> Tuple[str, ...]:
-        return ('measure',)
+    def applies_to(self) -> Tuple[str, ...]:
+        return 'measure',
 
-    def run(self, field: Any) -> bool:
-        if field.get('type') in ['count', 'count_distinct']:
-            return field.get('name').startswith('count_')
+    def run(self, lookml_object, runtime_params: Union[Any, None] = None) -> bool:
+        if lookml_object.get('type') == 'count':
+            return lookml_object.get('name').startswith('count_')
         return True
