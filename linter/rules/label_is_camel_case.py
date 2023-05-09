@@ -4,7 +4,8 @@ from typing import Any, Tuple, Union
 
 
 class LabelIsCamelCase(Rule):
-    def applies_to(self) -> Tuple[str, ...]:
+    @staticmethod
+    def applies_to() -> Tuple[str, ...]:
         return 'explore', 'view', 'field', 'dimension', 'measure'
 
     def run(self, lookml_object, runtime_params: Union[Any, None] = None) -> bool:

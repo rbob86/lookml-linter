@@ -3,7 +3,8 @@ from typing import Any, Tuple, Union
 
 
 class CountDistinctMeasureName(Rule):
-    def applies_to(self) -> Tuple[str, ...]:
+    @staticmethod
+    def applies_to() -> Tuple[str, ...]:
         return 'measure',
 
     def run(self, lookml_object, runtime_params: Union[Any, None] = None) -> bool:
