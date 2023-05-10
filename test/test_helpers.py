@@ -2,6 +2,7 @@ from linter.helpers import (
     pascal_case_to_snake_case,
     snake_case_to_pascal_case,
     is_snake_case,
+    is_camel_case_with_space,
 )
 
 
@@ -61,3 +62,12 @@ def test_is_snake_case_validates_successfully() -> None:
 def test_is_snake_case_fails() -> None:
     input = 'ThisIsNotSnakeCase'
     assert is_snake_case(input) == False
+
+def test_is_camel_case_ok() -> None:
+    input = 'This Is Camel Case'
+    assert is_camel_case_with_space(input) == True
+
+
+def test_is_camel_case_fails() -> None:
+    input = 'ThisIsNotSnakeCaseWithSpace'
+    assert is_camel_case_with_space(input) == False

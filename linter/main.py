@@ -1,6 +1,6 @@
 import os
-import subprocess
 from linter.config_validator import ConfigValidator
+from linter.file_validator import FileValidator
 from linter.lookml_linter import LookMlLinter
 from linter.lookml_project_parser import LookMlProjectParser
 from linter.rules_engine import RulesEngine
@@ -19,13 +19,19 @@ def main():
 
     # Retrieve rules from config and data from LookML files
     rules = RulesEngine(validator.config).rules
-    data = LookMlProjectParser(filepaths).get_parsed_lookml_files()
+    lookml_parser = LookMlProjectParser(filepaths)
+    data = lookml_parser.parsed_lookml_files
+
+    file_validator = FileValidator(lookml_parser.raw_files)
+    files_are_valid = file_validator.validate()
 
     if data:
         # Run linter and print output
         linter = LookMlLinter(data, rules)
         linter.run()
         error_log = linter.get_errors()
+        if not files_are_valid:
+            error_log = file_validator.error_log() + '\n' + error_log
         print(error_log)
 
         # Save output to GHA environment variable

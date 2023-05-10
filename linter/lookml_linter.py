@@ -1,6 +1,6 @@
 
 from typing import Dict, List, TypedDict
-from linter.rule import Rule, Severity
+from linter.rule import Rule
 
 
 class RuleEngineType(TypedDict):
@@ -14,9 +14,9 @@ class LookMlLinter:
         self.rules = rules
         self.has_errors = False
         self.sql_table_names = {}
+        self._errors = []
 
     def run(self) -> None:
-        self._errors = []
         for filename in self.data:
             file_data = self.data[filename]
             views = file_data.get('views', [])
@@ -41,10 +41,10 @@ class LookMlLinter:
                 for m in measures:
                     self.__lint_object(m, 'measure')
 
-    def get_errors(self) -> None:
+    def get_errors(self) -> str:
         output = ''
         for error in self._errors:
-            output += error['filename']
+            output += f"\n`{error['filename']}`"
             if len(error['messages']) == 0:
                 output += f'\n    No linting warnings/errors found.'
             for message in error['messages']:
@@ -52,20 +52,22 @@ class LookMlLinter:
             output += '\n'
         return output
 
-    def save_errors(self, output: str, filename: str) -> None:
+    @staticmethod
+    def save_errors(output: str, filename: str) -> None:
         f = open(filename, 'w')
         f.write(output)
         f.close()
 
-    def __lint_object(self, object: Dict, object_type: str) -> None:
+    def __lint_object(self, lookml_object: Dict, object_type: str) -> None:
         for rule in self.rules[object_type]:
             runner = rule['instance']
             if rule['name'] == 'view_must_have_unique_sql_table_name':
-                success = runner.run(object, self.sql_table_names)
+                success = runner.run(lookml_object, self.sql_table_names)
             else:
-                success = runner.run(object)
+                success = runner.run(lookml_object)
             if not success:
                 if not self.has_errors and runner.severity == 'error':
                     self.has_errors = True
-                error_msg = f'{runner.severity}: {object_type} {object["name"]} - {rule["name"]}'
+                emoji = ':x:' if runner.severity == 'error' else (':warning:' if runner.severity == 'warning' else '')
+                error_msg = f'{emoji} {object_type} {lookml_object["name"]} - {runner.message()}'
                 self._errors[-1]['messages'].append(error_msg)
