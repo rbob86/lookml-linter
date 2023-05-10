@@ -25,7 +25,7 @@ class FileValidator:
     def error_log(self):
         messages = []
         for er in self.errors:
-            messages.append(f":warning: File {er} has no comment on top with Owner and Created by")
+            messages.append(f":information_source: File {er} has no comment on top with Owner and Created by")
         return '\n'.join(messages)
 
     @staticmethod

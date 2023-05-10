@@ -31,7 +31,8 @@ def main():
         linter.run()
         error_log = linter.get_errors()
         if not files_are_valid:
-            error_log += file_validator.error_log() + '\n'
+            error_log = file_validator.error_log() + '\n' + error_log
+        print(error_log)
 
         # Save output to GHA environment variable
         with open(os.getenv('GITHUB_ENV'), 'a') as fh:
@@ -43,8 +44,6 @@ def main():
         # Save output to file, if enabled
         if save_output_to_file == 'true' or save_output_to_file == 'True':
             linter.save_errors(error_log, '_lookml-linter-output.txt')
-
-        print(error_log)
 
         # Fail GitHub Action only if linter has errors (warnings do not count)
         assert linter.has_errors == False, 'LookML Linter detected an error.'
