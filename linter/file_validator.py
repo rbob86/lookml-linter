@@ -26,7 +26,7 @@ class FileValidator:
         messages = []
         for er in self.errors:
             messages.append(f":information_source: File {er} has no comment on top with Owner and Created by")
-        return '\n'.join(messages)
+        return '\n'.join(messages) + '\n'
 
     @staticmethod
     def validate_comment_in_the_header(raw_file_lines) -> bool:
