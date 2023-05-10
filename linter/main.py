@@ -31,14 +31,14 @@ def main():
         linter.run()
         error_log = linter.get_errors()
         if not files_are_valid:
-            error_log += file_validator.error_log()
+            error_log += file_validator.error_log() + '\n'
 
         # Save output to GHA environment variable
         with open(os.getenv('GITHUB_ENV'), 'a') as fh:
             error_log = error_log.replace('    ', '&nbsp;&nbsp;&nbsp;&nbsp;')
-            fh.write("error_log<<EOF")
+            fh.write("error_log<<EOF\n")
             fh.write(error_log)
-            fh.write("EOF")
+            fh.write("EOF\n")
         
         # Save output to file, if enabled
         if save_output_to_file == 'true' or save_output_to_file == 'True':
