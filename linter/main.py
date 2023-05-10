@@ -31,7 +31,7 @@ def main():
         linter.run()
         error_log = linter.get_errors()
         if not files_are_valid:
-            error_log += '\n' + file_validator.error_log()
+            error_log += file_validator.error_log()
         print(error_log)
 
         # Save output to GHA environment variable
