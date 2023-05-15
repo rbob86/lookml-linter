@@ -22,5 +22,9 @@ def is_snake_case(name: str) -> bool:
     return pattern.match(name) is not None
 
 def is_camel_case_with_space(name: str) -> bool:
-    pattern = compile(r'^(?:(?:[A-Z]|[^\w\s]|[0-9])[^\s]*\s+)*(?:[A-Z]|[^\w\s]|[0-9])[^\s]*$')
+    pattern = compile(r'^[A-Z][a-z0-9]+(\s[A-Z][a-z0-9]+)*$')
+    return pattern.match(name) is not None
+
+def starts_with_capital_or_digit_or_special_char(name: str) -> bool:
+    pattern = compile(r'(^[^\w\s]$|^[^\w\s]?([A-Z]|[0-9])+)')
     return pattern.match(name) is not None

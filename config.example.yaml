@@ -2,6 +2,8 @@
   severity: ignore
 - rule: count_distinct_measure_name
   severity: ignore
+- rule: label_custom_check
+  severity: ignore
 - rule: label_is_camel_case
   severity: ignore
 - rule: field_requires_description
