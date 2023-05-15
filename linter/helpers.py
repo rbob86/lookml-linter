@@ -22,5 +22,5 @@ def is_snake_case(name: str) -> bool:
     return pattern.match(name) is not None
 
 def is_camel_case_with_space(name: str) -> bool:
-    pattern = compile(r'^[A-Z][a-z0-9]+(\s[A-Z][a-z0-9]+)*$')
+    pattern = compile(r'^(?:[A-Z0-9][a-zA-Z0-9]*\b\s*)+$')
     return pattern.match(name) is not None
