@@ -2,7 +2,7 @@ from linter.helpers import (
     pascal_case_to_snake_case,
     snake_case_to_pascal_case,
     is_snake_case,
-    is_camel_case_with_space,
+    is_camel_case_with_space, starts_with_capital_or_digit_or_special_char,
 )
 
 
@@ -71,3 +71,14 @@ def test_is_camel_case_ok() -> None:
 def test_is_camel_case_fails() -> None:
     input = 'ThisIsNotSnakeCaseWithSpace'
     assert is_camel_case_with_space(input) == False
+
+def test_starts_with_capital_or_digit_or_special_char_ok() -> None:
+    assert starts_with_capital_or_digit_or_special_char('Camel') == True
+    assert starts_with_capital_or_digit_or_special_char('VN') == True
+    assert starts_with_capital_or_digit_or_special_char('90D') == True
+    assert starts_with_capital_or_digit_or_special_char('(Non-VN)') == True
+    assert starts_with_capital_or_digit_or_special_char('-') == True
+
+def test_starts_with_capital_or_digit_or_special_char_fails() -> None:
+    assert is_camel_case_with_space('asd') == False
+    assert is_camel_case_with_space('(asd)') == False

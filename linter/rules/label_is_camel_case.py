@@ -12,4 +12,4 @@ class LabelIsCamelCase(Rule):
         return is_camel_case_with_space(lookml_object['label']) if 'label' in lookml_object else True
 
     def message(self) -> str:
-        return 'Label should be in Case Case'
+        return 'Label should be in Camel Case'
