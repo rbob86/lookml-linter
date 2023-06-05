@@ -20,36 +20,58 @@ def main():
     # Retrieve rules from config and data from LookML files
     rules = RulesEngine(validator.config).rules
     lookml_parser = LookMlProjectParser(filepaths)
-    data = lookml_parser.parsed_lookml_files
+    parsed_lookml_files = lookml_parser.parsed_lookml_files
 
     file_validator = FileValidator(lookml_parser.raw_files)
     files_are_valid = file_validator.validate()
 
-    if data:
+    output = None
+    outcome_fail = False
+    if parsed_lookml_files:
         # Run linter and print output
-        linter = LookMlLinter(data, rules)
+        linter = LookMlLinter(parsed_lookml_files, rules)
         linter.run()
         error_log = linter.get_errors()
         if not files_are_valid:
             error_log = file_validator.error_log() + '\n' + error_log
         print(error_log)
 
-        # Save output to GHA environment variable
-        with open(os.getenv('GITHUB_ENV'), 'a') as fh:
-            error_log = error_log.replace('    ', '&nbsp;&nbsp;&nbsp;&nbsp;')
-            fh.write("error_log<<EOF\n")
-            fh.write(error_log)
-            fh.write("EOF\n")
-        
+        output = error_log.replace('    ', '&nbsp;&nbsp;&nbsp;&nbsp;')
+
         # Save output to file, if enabled
         if save_output_to_file == 'true' or save_output_to_file == 'True':
             linter.save_errors(error_log, '_lookml-linter-output.txt')
 
-        # Fail GitHub Action only if linter has errors (warnings do not count)
-        assert linter.has_errors == False, 'LookML Linter detected an error.'
+        if linter.has_errors:
+            outcome_fail = True
+    elif lookml_parser.not_parsed_lookml_files:
+        output = ''
+        for not_parsed_lookml_file_path in lookml_parser.not_parsed_lookml_files.keys():
+            output += f"File {not_parsed_lookml_file_path} could not be parsed: " \
+                      f"{lookml_parser.not_parsed_lookml_files[not_parsed_lookml_file_path]}"
+        outcome_fail = True
     elif filepaths:
-        print('No .lkml files changed.')
+        output = f'No .lkml files found in paths: {filepaths}'
     else:
-        print('No .lkml files found in project.')
+        output = 'No .lkml files found in project.'
+
+    if output:
+        print(output)
+        write_output_to_gha_env(output=output, gha_env_name='error_log')
+    if outcome_fail:
+        raise Exception('LookML Linter detected an error.')
+
+def write_output_to_gha_env(output: str, gha_env_name: str):
+    """
+    Save output to GHA environment variable
+    :param output: output value
+    :param gha_env_name: GitHub env name
+    :return:
+    """
+    with open(os.getenv('GITHUB_ENV'), 'a') as fh:
+        fh.write(f"{gha_env_name}<<EOF\n")
+        fh.write(output)
+        fh.write("EOF\n")
+
 
 main()

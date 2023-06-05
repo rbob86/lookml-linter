@@ -17,7 +17,7 @@ class LookMlProjectParser:
         else:
             raise IOError('Directory does not exist: %s' %
                           LookMlProjectParser.root_file_path)
-        self.__not_parsed_lookml_files = []
+        self.__not_parsed_lookml_files = {}
         self.__parsed_lookml_files = {}
         for filepath in lkml_filepaths:
             if not os.path.exists(filepath):
@@ -27,8 +27,8 @@ class LookMlProjectParser:
                     lookml = lkml.load(file)
                     if lookml:
                         self.__parsed_lookml_files[filepath] = lookml
-                except SyntaxError:
-                    self.__not_parsed_lookml_files.append(filepath)
+                except SyntaxError as e:
+                    self.__not_parsed_lookml_files[filepath] = str(e)
 
     @property
     def raw_files(self):
