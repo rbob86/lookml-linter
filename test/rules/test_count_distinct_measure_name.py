@@ -1,6 +1,5 @@
 from linter.rule import Severity
 from linter.rules.count_distinct_measure_name import CountDistinctMeasureName
-from linter.rules.count_measure_name_must_start_with_count import CountMeasureNameMustStartWithCount
 
 
 def test_run_method_successfully_validates_count_measure_name() -> None:
