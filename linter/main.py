@@ -25,36 +25,39 @@ def main():
     file_validator = FileValidator(lookml_parser.raw_files)
     files_are_valid = file_validator.validate()
 
-    output = None
+    output = ''
     outcome_fail = False
-    if parsed_lookml_files:
-        # Run linter and print output
-        linter = LookMlLinter(parsed_lookml_files, rules)
-        linter.run()
-        error_log = linter.get_errors()
-        if not files_are_valid:
-            error_log = file_validator.error_log() + '\n' + error_log
-        print(error_log)
-
-        output = error_log.replace('    ', '&nbsp;&nbsp;&nbsp;&nbsp;')
-        write_output_to_gha_env(output=output, gha_env_name='error_log')
-
-        # Save output to file, if enabled
-        if save_output_to_file == 'true' or save_output_to_file == 'True':
-            linter.save_errors(error_log, '_lookml-linter-output.txt')
-
-        if linter.has_errors:
-            outcome_fail = True
-    elif lookml_parser.not_parsed_lookml_files:
-        output = ''
-        for not_parsed_lookml_file_path in lookml_parser.not_parsed_lookml_files.keys():
-            output += f"File {not_parsed_lookml_file_path} could not be parsed: " \
-                      f"{lookml_parser.not_parsed_lookml_files[not_parsed_lookml_file_path]}\n"
-        outcome_fail = True
-    elif filepaths:
-        output = f'No .lkml files found in paths: {filepaths}'
+    if not lookml_parser.lkml_filepaths:
+        if filepaths:
+            output = f'No .lkml files found in paths: {filepaths}'
+        else:
+            output = 'No .lkml files found in project.'
     else:
-        output = 'No .lkml files found in project.'
+        if parsed_lookml_files:
+            # Run linter and print output
+            linter = LookMlLinter(parsed_lookml_files, rules)
+            linter.run()
+            error_log = linter.get_errors()
+            if not files_are_valid:
+                error_log = file_validator.error_log() + '\n' + error_log
+            print(error_log)
+
+            output = error_log.replace('    ', '&nbsp;&nbsp;&nbsp;&nbsp;')
+            write_output_to_gha_env(output=output, gha_env_name='error_log')
+
+            # Save output to file, if enabled
+            if save_output_to_file == 'true' or save_output_to_file == 'True':
+                linter.save_errors(error_log, '_lookml-linter-output.txt')
+
+            if linter.has_errors:
+                outcome_fail = True
+
+        if lookml_parser.not_parsed_lookml_files:
+            for not_parsed_lookml_file_path in lookml_parser.not_parsed_lookml_files.keys():
+                print(f"File {not_parsed_lookml_file_path} could not be parsed: "
+                      f"{lookml_parser.not_parsed_lookml_files[not_parsed_lookml_file_path]}\n")
+                output += f"\n:x: File `{not_parsed_lookml_file_path}` could not be parsed.\n"
+            outcome_fail = True
 
     if output:
         print(output)
@@ -68,10 +71,12 @@ def write_output_to_gha_env(output: str, gha_env_name: str):
     :param gha_env_name: GitHub env name
     :return:
     """
-    with open(os.getenv('GITHUB_ENV'), 'a') as fh:
-        fh.write(f"{gha_env_name}<<EOF\n")
-        fh.write(output)
-        fh.write("EOF\n")
+    gha = os.getenv('GITHUB_ENV')
+    if gha:
+        with open(gha, 'a') as fh:
+            fh.write(f"{gha_env_name}<<EOF\n")
+            fh.write(output)
+            fh.write("EOF\n")
 
 
 main()
