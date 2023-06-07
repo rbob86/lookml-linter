@@ -17,11 +17,13 @@ class LookMlProjectParser:
         else:
             raise IOError('Directory does not exist: %s' %
                           LookMlProjectParser.root_file_path)
+        self.__lkml_filepaths = []
         self.__not_parsed_lookml_files = {}
         self.__parsed_lookml_files = {}
         for filepath in lkml_filepaths:
             if not os.path.exists(filepath):
                 raise IOError('File does not exist: %s' % filepath)
+            self.__lkml_filepaths.append(filepath)
             with open(filepath, 'r') as file:
                 try:
                     lookml = lkml.load(file)
@@ -45,3 +47,7 @@ class LookMlProjectParser:
     @property
     def not_parsed_lookml_files(self):
         return self.__not_parsed_lookml_files
+
+    @property
+    def lkml_filepaths(self):
+        return self.__lkml_filepaths
