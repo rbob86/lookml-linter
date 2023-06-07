@@ -43,7 +43,6 @@ def main():
             print(error_log)
 
             output = error_log.replace('    ', '&nbsp;&nbsp;&nbsp;&nbsp;')
-            write_output_to_gha_env(output=output, gha_env_name='error_log')
 
             # Save output to file, if enabled
             if save_output_to_file == 'true' or save_output_to_file == 'True':
@@ -62,6 +61,7 @@ def main():
     if output:
         print(output)
     if outcome_fail:
+        write_output_to_gha_env(output=output, gha_env_name='error_log')
         raise Exception('LookML Linter detected an error')
 
 def write_output_to_gha_env(output: str, gha_env_name: str):
