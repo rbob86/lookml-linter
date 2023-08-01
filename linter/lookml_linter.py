@@ -41,12 +41,13 @@ class LookMlLinter:
                 for m in measures:
                     self.__lint_object(m, 'measure')
 
-    def get_errors(self) -> None:
+    def get_errors(self) -> str:
         output = ''
         for error in self._errors:
             output += error['filename']
             if len(error['messages']) == 0:
                 output += f'\n    No linting warnings/errors found.'
+            error['messages'].sort(reverse=True)
             for message in error['messages']:
                 output += f'\n    {message}'
             output += '\n'
@@ -67,5 +68,12 @@ class LookMlLinter:
             if not success:
                 if not self.has_errors and runner.severity == 'error':
                     self.has_errors = True
-                error_msg = f'{runner.severity}: {object_type} {object["name"]} - {rule["name"]}'
+                formatted_severity = self._format_severity(runner.severity)
+                error_msg = f'{formatted_severity}: {object_type} {object["name"]} - {rule["name"]}'
                 self._errors[-1]['messages'].append(error_msg)
+
+    def _format_severity(self, severity: Severity) -> str:
+        if severity == Severity.ERROR.value:
+            return '🚨 **Error**'
+        if severity == Severity.WARNING.value:
+            return '**Warning**'
