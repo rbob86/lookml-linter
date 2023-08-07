@@ -1,5 +1,9 @@
 - rule: field_requires_description
   severity: warning
+- rule: field_description_requires_minimum_length
+  severity: warning
+  param_sets:
+    - min_length: 20
 - rule: view_with_many_fields_requires_fields_hidden_by_default
   severity: warning
 - rule: view_with_dimensions_and_measures_has_one_primary_key
@@ -14,6 +18,10 @@
   severity: warning
 - rule: explore_requires_description
   severity: warning
+- rule: explore_description_requires_minimum_length
+  severity: warning
+  param_sets:
+    - min_length: 20
 - rule: explore_joins_contain_many_to_many_relationship
   severity: warning
 - rule: explore_requires_label
@@ -26,6 +34,12 @@
   severity: warning
 - rule: explore_requires_fields
   severity: warning
+- rule: view_requires_description
+  severity: warning
+- rule: view_description_requires_minimum_length
+  severity: warning
+  param_sets:
+    - min_length: 20
 - rule: view_requires_label
   severity: warning
 - rule: dimension_group_name_should_not_end_with_date_or_time

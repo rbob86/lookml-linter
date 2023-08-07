@@ -22,13 +22,27 @@ The linter parses the LookML files in the project and checks if there are any ex
   - This rule checks that a relationship parameter is explicitly used on joins in explore objects.
 - ExploreRequiresDescription
   - This rule checks if all explore objects have a description parameter defined.
+- ExploreDescriptionRequiresMinimumLength
+  - This rule checks that all explore descriptions are at least `min_length` characters long if they are defined. This rule is ignored if the description is not defined, to avoid redundancy with the `ExploreRequiresDescription` rule.
+  - Defined `param_sets`:
+    - `min_length`
 - ExploreTagRequiresOwner
   - This rule checks that each explore has an owner defined in its [tag parameter](https://cloud.google.com/looker/docs/reference/param-explore-tags)
-    - `tags: ['owner:your_name'] `
+    - `tags: ['owner:your_name']`
 - FieldRequiresDescription
   - This rule checks that all non-hidden fields (measures, dimensions, and dimension_groups) have descriptions added.
+- FieldDescriptionRequiresMinimumLength
+  - This rule checks that all non-hidden fields (measures, dimensions, and dimension_groups) descriptions are at least `min_length` characters long if they are defined. This rule is ignored if the description is not defined, to avoid redundancy with the `FieldRequiresDescription` rule.
+  - Defined `param_sets`:
+    - `min_length`
 - FieldSqlHtmlRequiresUserAttributeWhenSearchTermsFound
   - This rule checks fields with the search term in the name use a specific user_attribute to limit the field access.
+- ViewRequiresDescription
+  - This rule checks that all views have a description defined.
+- ViewDescriptionRequiresMinimumLength
+  - This rule checks that all view descriptions are at least `min_length` characters long if they are defined. This rule is ignored if the description is not defined, to avoid redundancy with the `ViewRequiresDescription` rule.
+  - Defined `param_sets`:
+    - `min_length`
 - ViewWithDimensionsAndMeasuresHasOnePrimaryKey
   - This rule checks to make sure that views have one field defined as the primary key.
 - ViewWithManyFieldsRequiresFieldsHiddenByDefault
@@ -58,7 +72,7 @@ Finally update the config file to have the rule run. If a rule is not explicitly
 
 Required to run the linter is a configuration file in YAML format. Included in the repository is a config.example.yaml file. Copy this file to config.yaml (or another filename of your choice) and customize appropriately. Every rule in `/linter/rules` must be specified here, with each having at least a `severity` attribute, as such:
 
-```
+```yaml
 - rule: field_requires_description
 
   severity: warning
@@ -75,9 +89,13 @@ Severity attributes can be one of the following:
 - warning - warnings will be reported but will not stop the…
 - ignore - these rules will not be applied during linting
 
-Rules can also accept custom parameters. To specify a series of parameters that should be applied to a rule, add a `param_sets` array to the configuration file, e.g.:
+Rules can also accept custom parameters. To specify a series of parameters that should be applied to a rule, add a `param_sets` array to the configuration file, _e.g._:
 
-```
+```yaml
+- rule: explore_description_requires_minimum_length
+  severity: warning
+  param_sets:
+    - min_length: 20
 - rule: field_sql_html_requires_user_attribute_when_search_terms_found_exact
   severity: error
   param_sets:
@@ -94,7 +112,7 @@ Rules can also accept custom parameters. To specify a series of parameters that 
 
 In this example, the `field_sql_html_requires_user_attribute_when_search_terms_found_exact` rule will be run once per param set, and the rule’s run method will be able to access `user_attribute` and `search_terms`:
 
-```
+```python
 user_attribute = self.params['user_attribute']
 search_terms = self.params['search_terms']
 ```

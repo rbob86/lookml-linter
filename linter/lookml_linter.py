@@ -59,7 +59,7 @@ class LookMlLinter:
         f.close()
 
     def __lint_object(self, object: Dict, object_type: str) -> None:
-        for rule in self.rules[object_type]:
+        for rule in self.rules.get(object_type, []):
             runner = rule['instance']
             if rule['name'] == 'view_must_have_unique_sql_table_name':
                 success = runner.run(object, self.sql_table_names)
