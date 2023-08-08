@@ -1,6 +1,5 @@
 view: products {
   sql_table_name: public.products ;;
-  description: "Products long description"
 
   dimension: id {
     primary_key: yes
