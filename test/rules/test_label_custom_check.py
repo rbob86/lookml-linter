@@ -13,6 +13,12 @@ def test_lookml_object_with_label() -> None:
                 'description': 'Name of User',
                 'sql': '${TABLE}.USER_NAME'
             },
+            'user_last_name': {
+                'type': 'string',
+                'label': ' Last Name', #e.g. Forcing order by adding space to label start
+                'description': 'User Last Name',
+                'sql': '${TABLE}.USER_LAST_NAME'
+            },
             'requester_name': {
                 'type': 'string',
                 'label': '(requester)', # not in Camel Case
