@@ -43,7 +43,7 @@ def main():
                 error_log = file_validator.error_log() + '\n' + error_log
             print(error_log)
 
-            output = error_log.replace('    ', '&nbsp;&nbsp;&nbsp;&nbsp; ')
+            output = error_log.replace('    ', '- ')
 
             # Save output to file, if enabled
             if save_output_to_file == 'true' or save_output_to_file == 'True':
