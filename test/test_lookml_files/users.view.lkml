@@ -1,6 +1,7 @@
 #################################################################################
-# Owner: Me
-# Created by: Me
+# Squad/Team: Me
+# Owned by: Me
+# Created: Me
 ##################################################################################
 view: users {
   sql_table_name: `lookerplus.the_look.users`
