@@ -30,7 +30,7 @@ class FileValidator:
 
     @staticmethod
     def validate_comment_in_the_header(raw_file_lines) -> bool:
-        return len(raw_file_lines) >= 3 \
+        return len(raw_file_lines) >= 4 \
             and '###' in raw_file_lines[0] \
             and '# Squad/Team:' in raw_file_lines[1] \
             and '# Owned by:' in raw_file_lines[2] \
